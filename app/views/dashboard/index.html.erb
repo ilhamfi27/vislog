@@ -1,0 +1,16 @@
+Hai <%= current_user.email %> |
+<%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+<%= search_form_for @search, url: dashboard_path, method: :get do |f| %>
+  <%= f.label :search_program, "Search Program" %>
+  <%= f.search_field :program_cont, placeholder: "Search Program", class: "form-control" %>
+
+  <%= f.submit :submit %>
+<% end %>
+
+<% if @television_programs.present? %>
+  <% @television_programs.each do |p| %>
+    <%= p.program %>
+  <%end%>
+<% else %>
+  Gak ada
+<% end %>
