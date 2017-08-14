@@ -6,26 +6,6 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   attr_accessor :login
 
-  def user_has_signed_in
-    if user_signed_in? && current_user.admin?
-      redirect_to administrator_path
-    elsif user_signed_in? && current_user.admin == false
-      redirect_to dashboard_path
-    end
-  end
-
-  def user_not_administrator
-    if current_user.admin == false
-      redirect_to dashboard_path
-    end
-  end
-
-  def user_is_administrator
-    if current_user.admin?
-      redirect_to administrator_path
-    end
-  end
-
   def record_activity(action)
     @activity = ActivityRecord.new
     @activity.username = current_user.username
@@ -36,7 +16,13 @@ class ApplicationController < ActionController::Base
     @activity.action = action_name 
     @activity.params = params.inspect
     @activity.save
-end
+  end
+
+  def user_has_signed_in
+    if user_signed_in?
+      redirect_to 
+    end
+  end
 
   protected
     def configure_permitted_parameters
@@ -47,10 +33,6 @@ end
 
   private
     def after_sign_in_path_for(resource)
-      if resource.admin?
-        administrator_path
-      else
-        dashboard_path
-      end
+      home_path
     end
 end

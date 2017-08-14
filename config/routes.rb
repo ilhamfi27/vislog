@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'administrator', to: 'administrator#index' 
-  get 'dashboard/', to: 'dashboard#index'
+  get 'home/', to: 'dashboard#home' 
+  get 'dashboard/', to: 'dashboard#index' 
   devise_for :users, controllers: { sessions: 'users/sessions' }
   root 'welcome#index', as: :authenticated_root
 
