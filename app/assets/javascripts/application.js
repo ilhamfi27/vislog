@@ -14,4 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap/bootstrap.min
-//= require_tree .
+//= require lodash
+//= require bootstrap-select/bootstrap-select.min
+
+
+$(document).on("ready", function(){
+  $('.selectpicker').selectpicker();
+});
