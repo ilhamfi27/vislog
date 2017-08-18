@@ -5,11 +5,20 @@ Hai <%= current_user.username %> |
   <b>User</b>
 <% end %>
 |
-<%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+<%= link_to 'Log Out', destroy_user_session_path, method: :delete %> |
+<%= link_to 'Edit Profile', edit_user_registration_path %>
+<%= link_to 'Admin Page', administrator_path if current_user.admin? %>
 <%= search_form_for @search, url: dashboard_path, method: :get do |f| %>
-  <%= f.label :search_program, "Search Program" %>
-  <%= f.search_field :program_cont, placeholder: "Search Program", class: "form-control" %>
+  <select name='cols[]' multiple class="selectpicker" data-actions-box="true">
+    <option value="channel_cont">channel</option>
+    <option value="program_cont">program</option>
+    <option value="level_1_cont">level_1</option>
+    <option value="level_2_cont">level_2</option>
+    <option value="cost_eq">cost</option>
+  </select>
+  <input type="text" name="keyword" id="search" class="form-control js-search-box" placeholder="Search" >
 
   <%= f.submit :submit %>
 <% end %>
+
 

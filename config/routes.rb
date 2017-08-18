@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   get 'administrator', to: 'administrator#index' 
   get 'home/', to: 'dashboard#home' 
   get 'dashboard/', to: 'dashboard#index' 
-  devise_for :users, controllers: { sessions: 'users/sessions' }
+  devise_for :users, controllers: { 
+    sessions: 'users/sessions', 
+    registrations: 'users/registrations' 
+  }
   root 'welcome#index', as: :authenticated_root
 
   # The priority is based upon order of creation: first created -> highest priority.
