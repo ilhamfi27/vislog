@@ -1,0 +1,56 @@
+<%= form_for(@television_program) do |f| %>
+  
+  <div class="field">
+    <%= f.label :channel_id, "channel" %><br />
+    <%= f.select :channel_id, @channel_collection, {include_blank:  "Select Channel"}, {class: 'form-control'} %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :program %><br />
+    <%= f.text_field :program %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :level_1 %><br />
+    <%= f.text_field :level_1 %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :level_2 %><br />
+    <%= f.text_field :level_2 %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :start_time %><br />
+    <%= f.time_field :start_time %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :end_time %><br />
+    <%= f.time_field :end_time %>
+  </div>
+    
+  <div class="field">
+    <%= f.label :size %><br />
+    <%= f.text_field :size %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :cost %><br />
+    <%= f.text_field :cost %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :st_video %><br />
+    <%= f.time_field :st_video %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :et_video %><br />
+    <%= f.time_field :et_video %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit :submit %>
+  </div>
+<% end %>

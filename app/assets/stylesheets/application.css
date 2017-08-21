@@ -12,6 +12,6 @@
  *
  *= require bootstrap/bootstrap
  *= require bootstrap-select/bootstrap-select.min
- *=
+ *= require dataTables.bootstrap.min
  *= require_self
  */

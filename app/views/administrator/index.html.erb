@@ -1,1 +1,144 @@
-<%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+<div class="container">
+  <%= link_to 'Log Out', destroy_user_session_path, method: :delete %> |
+  <%= link_to 'Home', home_path %>
+  <div class="row">
+    <div class="col-md-3">
+      Upload Data <br>
+      <%= link_to 'Commercial', 'javascript:void(0);' %><br>
+      <%= link_to 'Program', new_television_program_path %><br>
+      <%= link_to 'Audience', 'javascript:void(0);' %><br>
+      <%= link_to 'Channel', new_channel_path %>
+    </div>
+    <div class="col-md-9">
+      <p>Television Program Data</p>
+      <div class="table-responsive">
+        <table id="js-television-program-data-table">
+          <thead>
+            <tr>
+              <th>
+                program
+              </th>
+              <th>
+                channel
+              </th>
+              <th>
+                level 1
+              </th>
+              <th>
+                level 2
+              </th>
+              <th>
+                start time
+              </th>
+              <th>
+                end time
+              </th>
+              <th>
+                duration
+              </th>
+              <th>
+                size
+              </th>
+              <th>
+                cost
+              </th>
+              <th>
+                st video
+              </th>
+              <th>
+                et video
+              </th>
+              <th>
+                date
+              </th>
+              <th>
+                action
+              </th>
+            </tr>
+          </thead>
+          <% @television_programs.each do |television_program| %>
+            <tbody>
+              <tr>
+                <td>
+                  <%= television_program.program %>
+                </td>
+                <td>
+                  <%= television_program.channel.name %>
+                </td>
+                <td>
+                  <%= television_program.level_1 %>
+                </td>
+                <td>
+                  <%= television_program.level_2 %>
+                </td>
+                <td>
+                  <%= television_program.start_time %>
+                </td>
+                <td>
+                  <%= television_program.end_time %>
+                </td>
+                <td>
+                  <%= television_program.duration %>
+                </td>
+                <td>
+                  <%= television_program.size %>
+                </td>
+                <td>
+                  <%= television_program.cost %>
+                </td>
+                <td>
+                  <%= television_program.st_video %>
+                </td>
+                <td>
+                  <%= television_program.et_video %>
+                </td>
+                <td>
+                  <%= television_program.created_at %>
+                </td>
+                <td>
+                  <%= link_to "update", edit_television_program_path(television_program.id) %>
+                  <%= link_to "delete", television_program_path(television_program.id), method: :delete %>
+                </td>
+              </tr>
+            </tbody>
+            <% end %>
+        </table>
+      </div>
+      <br>
+      <p>Channel Data</p>
+      <div class="table-responsive">
+        <table id="js-channel-data-table">
+          <thead>
+            <tr>
+              <th>
+                Channel Id
+              </th>
+              <th>
+                Name
+              </th>
+              <th>
+                action
+              </th>
+            </tr>
+          </thead>
+          <% @channels.each do |channel| %>
+            <tbody>
+              <tr>
+                <td>
+                  <%= channel.channel_id %>
+                </td>
+                <td>
+                  <%= channel.name %>
+                </td>
+                <td>
+                  <%= link_to "update", edit_channel_path(channel.id) %>
+                  <%= link_to "delete", channel_path(channel.id), method: :delete %>
+                </td>
+              </tr>
+            </tbody>
+            <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

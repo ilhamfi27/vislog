@@ -1,0 +1,16 @@
+<%= form_for(@channel) do |f| %>
+  
+  <div class="field">
+    <%= f.label :channel_id, "channel id" %><br />
+    <%= f.text_field :channel_id, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit :submit %>
+  </div>
+<% end %>

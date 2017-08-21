@@ -5,12 +5,7 @@ Hai <%= current_user.username %> |
   <b>User</b>
 <% end %>
 |
-<%= link_to 'Log Out', destroy_user_session_path, method: :delete %> |
-<%= link_to 'Edit Profile', edit_user_registration_path %>
-<%= link_to 'Admin Page', administrator_path if current_user.admin? %>
-<%= link_to 'Ads Performance', ads_performances_path %>
 <%= search_form_for @search, url: dashboard_path, method: :get do |f| %>
-  <%#= select_tag :cols, options_for_select(["channel_cont", "program_cont","level_1_cont", "level_2_cont","cost_eq"]), multiple: true, class: "selectpicker", data: { 'actions-box': true } %>
   <select name='cols[]' multiple class="selectpicker" data-actions-box="true">
     <option value="channel_cont">channel</option>
     <option value="program_cont">program</option>
@@ -23,4 +18,12 @@ Hai <%= current_user.username %> |
   <%= f.submit :submit %>
 <% end %>
 
-
+result:
+<br>
+<% if @television_programs.present? %>
+  <% @television_programs.each do |p| %>
+    <%= p.program %>
+  <%end%>
+<% else %>
+  Gak ada
+<% end %>

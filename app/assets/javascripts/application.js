@@ -16,8 +16,14 @@
 //= require bootstrap/bootstrap.min
 //= require lodash
 //= require bootstrap-select/bootstrap-select.min
+//= require jquery.dataTables.min
+//= require dataTables.bootstrap.min
 
 
 $(document).on("ready", function(){
   $('.selectpicker').selectpicker();
+  $('#js-television-program-data-table, #js-channel-data-table').DataTable({
+    responsive: true
+  });
 });
+

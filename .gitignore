@@ -30,8 +30,8 @@ config/initializers/secret_token.rb
 /config/database.yml
 /db/schema.rb
 
-# Ignore secret.yml
-/config/secrets.yml
+# ignore image storage folder
+/public/uploads
 
 # these should all be checked in to normalize the environment:
 # Gemfile.lock, .ruby-version, .ruby-gemset

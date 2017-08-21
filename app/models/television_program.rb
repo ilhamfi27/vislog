@@ -1,4 +1,6 @@
 class TelevisionProgram < ActiveRecord::Base
+  belongs_to :channel
+  
   class << self
     def dashboard_search(keyword, columns)
       if columns

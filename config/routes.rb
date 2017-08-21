@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :channels
+  resources :television_programs
+  resources :ads_performances
   get 'administrator', to: 'administrator#index' 
   get 'home/', to: 'dashboard#home' 
   get 'dashboard/', to: 'dashboard#index' 
@@ -6,7 +9,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions', 
     registrations: 'users/registrations' 
   }
-  root 'welcome#index', as: :authenticated_root
+  root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

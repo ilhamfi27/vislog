@@ -1,0 +1,2 @@
+module AdsPerformancesHelper
+end
