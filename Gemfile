@@ -31,7 +31,10 @@ gem 'pundit'
 # for uploading images
 gem 'carrierwave'
 gem 'mini_magick'
-
+# for uploading video using carrierwave
+gem 'carrierwave-video'
+# cloud based file storage
+gem 'cloudinary'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

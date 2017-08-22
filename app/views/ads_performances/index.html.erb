@@ -1,29 +1,114 @@
-Hai <%= current_user.username %> |
-<% if current_user.admin? %>
-  <b>Admin</b>
-<% else %>
-  <b>User</b>
-<% end %>
-|
-<%= search_form_for @search, url: dashboard_path, method: :get do |f| %>
-  <select name='cols[]' multiple class="selectpicker" data-actions-box="true">
-    <option value="channel_cont">channel</option>
-    <option value="program_cont">program</option>
-    <option value="level_1_cont">level_1</option>
-    <option value="level_2_cont">level_2</option>
-    <option value="cost_eq">cost</option>
-  </select>
-  <input type="text" name="keyword" id="search" class="form-control js-search-box" placeholder="Search" >
+<div class="container">
+  Hai <%= current_user.username %> |
+  <% if current_user.admin? %>
+    <b>Admin</b>
+  <% else %>
+    <b>User</b>
+  <% end %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= search_form_for @search, url: dashboard_path, method: :get do |f| %>
+        <select name='cols[]' multiple class="selectpicker" data-actions-box="true">
+          <option value="channel_cont">channel</option>
+          <option value="program_cont">program</option>
+          <option value="level_1_cont">level_1</option>
+          <option value="level_2_cont">level_2</option>
+          <option value="cost_eq">cost</option>
+        </select>
+        <input type="text" name="keyword" id="search" class="form-control js-search-box" placeholder="Search" >
 
-  <%= f.submit :submit %>
-<% end %>
-
-result:
-<br>
-<% if @television_programs.present? %>
-  <% @television_programs.each do |p| %>
-    <%= p.program %>
-  <%end%>
-<% else %>
-  Gak ada
-<% end %>
+        <%= f.submit :submit %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table id="js-television-program-data-table">
+          <thead>
+            <tr>
+              <th>
+                program
+              </th>
+              <th>
+                channel
+              </th>
+              <th>
+                level 1
+              </th>
+              <th>
+                level 2
+              </th>
+              <th>
+                start time
+              </th>
+              <th>
+                end time
+              </th>
+              <th>
+                duration
+              </th>
+              <th>
+                size
+              </th>
+              <th>
+                cost
+              </th>
+              <th>
+                st video
+              </th>
+              <th>
+                et video
+              </th>
+              <th>
+                date
+              </th>
+            </tr>
+          </thead>
+          <% @television_programs.each do |television_program| %>
+            <tbody>
+              <tr>
+                <td>
+                  <%= television_program.program %>
+                </td>
+                <td>
+                  <%= television_program.channel.name %>
+                </td>
+                <td>
+                  <%= television_program.level_1 %>
+                </td>
+                <td>
+                  <%= television_program.level_2 %>
+                </td>
+                <td>
+                  <%= television_program.start_time %>
+                </td>
+                <td>
+                  <%= television_program.end_time %>
+                </td>
+                <td>
+                  <%= television_program.duration %>
+                </td>
+                <td>
+                  <%= television_program.size %>
+                </td>
+                <td>
+                  <%= television_program.cost %>
+                </td>
+                <td>
+                  <%= television_program.st_video %>
+                </td>
+                <td>
+                  <%= television_program.et_video %>
+                </td>
+                <td>
+                  <%= television_program.created_at %>
+                </td>
+              </tr>
+            </tbody>
+            <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
