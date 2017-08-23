@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # user authentication
 gem 'devise'
+# inviting user
+gem 'devise_invitable'
 # for search gem
 gem 'ransack'
 # user authorization

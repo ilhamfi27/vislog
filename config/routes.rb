@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get 'dashboard/', to: 'dashboard#index' 
   devise_for :users, controllers: { 
     sessions: 'users/sessions', 
-    registrations: 'users/registrations' 
+    registrations: 'users/registrations', 
+    invitations: 'users/invitations'
   }
   root 'welcome#index'
 
