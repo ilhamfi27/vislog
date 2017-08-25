@@ -1,0 +1,51 @@
+<%= form_for(@viewer) do |f| %>
+  
+  <div class="field">
+    <%#= f.label :post_buy_id, "Post Buy" %><br />
+    <%#= f.select :post_buy_id, @post_buy_collection, {include_blank:  "Select Data"}, {class: 'form-control'} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :market %><br />
+    <%= f.text_field :market, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :activity %><br />
+    <%= f.text_field :activity, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :target %><br />
+    <%= f.text_field :target, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :day_part_or_variable %><br />
+    <%= f.text_field :day_part_or_variable, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :tVR %><br />
+    <%= f.text_field :tVR, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :share %><br />
+    <%= f.text_field :share, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :'000s' %><br />
+    <%= f.text_field :'000s', class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :index %><br />
+    <%= f.text_field :index, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit :submit %>
+  </div>
+<% end %>

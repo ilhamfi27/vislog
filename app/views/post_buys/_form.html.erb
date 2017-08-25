@@ -1,0 +1,148 @@
+<%= form_for(@post_buy) do |f| %>
+  
+  <div class="field">
+    <%= f.label :channel_id, "channel" %><br />
+    <%= f.select :channel_id, @channel_collection, {include_blank:  "Select Channel"}, {class: 'form-control'} %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :program %><br />
+    <%= f.text_field :program, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :level_1 %><br />
+    <%= f.text_field :level_1, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :level_2 %><br />
+    <%= f.text_field :level_2, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :sector %><br />
+    <%= f.text_field :sector, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :category %><br />
+    <%= f.text_field :category, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :advertiser %><br />
+    <%= f.text_field :advertiser, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :product %><br />
+    <%= f.text_field :product, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :copy %><br />
+    <%= f.text_field :copy, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :start_time %><br />
+    <%= f.time_field :start_time %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :end_time %><br />
+    <%= f.time_field :end_time %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :break_no %><br />
+    <%= f.text_field :break_no, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :pos_in_break %><br />
+    <%= f.text_field :pos_in_break, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :break %><br />
+    <%= f.text_field :break, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :spot_type %><br />
+    <%= f.text_field :spot_type, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :size %><br />
+    <%= f.text_field :size, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :cost %><br />
+    <%= f.text_field :cost, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :t_second_cost %><br />
+    <%= f.text_field :t_second_cost, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :st_video %><br />
+    <%= f.time_field :st_video %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :et_video %><br />
+    <%= f.time_field :et_video %>
+  </div>
+
+  <%= f.fields_for :viewer do |ff| %>
+    <div class="field">
+      <%= ff.label :market %><br />
+      <%= ff.text_field :market, class: 'form-control' %>
+    </div>
+    
+    <div class="field">
+      <%= ff.label :activity %><br />
+      <%= ff.text_field :activity, class: 'form-control' %>
+    </div>
+    
+    <div class="field">
+      <%= ff.label :target %><br />
+      <%= ff.text_field :target, class: 'form-control' %>
+    </div>
+    
+    <div class="field">
+      <%= ff.label :day_part_or_variable %><br />
+      <%= ff.text_field :day_part_or_variable, class: 'form-control' %>
+    </div>
+    
+    <div class="field">
+      <%= ff.label :tVR %><br />
+      <%= ff.text_field :tVR, class: 'form-control' %>
+    </div>
+    
+    <div class="field">
+      <%= ff.label :share %><br />
+      <%= ff.text_field :share, class: 'form-control' %>
+    </div>
+    
+    <div class="field">
+      <%= ff.label :'000s' %><br />
+      <%= ff.text_field :'000s', class: 'form-control' %>
+    </div>
+    
+    <div class="field">
+      <%= ff.label :index %><br />
+      <%= ff.text_field :index, class: 'form-control' %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit :submit %>
+  </div>
+<% end %>

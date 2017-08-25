@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :channels
   resources :television_programs
   resources :ads_performances
+  resources :post_buys
+  resources :viewers
   get 'administrator', to: 'administrator#index' 
   get 'home/', to: 'dashboard#home' 
   get 'dashboard/', to: 'dashboard#index' 

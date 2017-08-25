@@ -37,7 +37,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def to_seconds(time)
+    Time.parse(time).seconds_since_midnight.to_i
+  end
 
+  def to_hours(seconds)
+    Time.at(seconds).utc.strftime("%H:%M:%S")
+  end
 
   protected
     def configure_permitted_parameters
