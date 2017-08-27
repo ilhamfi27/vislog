@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <%= videojs_rails sources: { mp4: @television_program.video.url }, setup: "{}", controls: true, width:"400" %>
+      <%= video_tag @television_program.video.url, controls: true %>
+    </div>
+  </div>
+</div>

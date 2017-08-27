@@ -7,7 +7,7 @@
   <% end %>
   <div class="row">
     <div class="col-md-12">
-      <%= search_form_for @search, url: dashboard_path, method: :get do |f| %>
+      <%= search_form_for @search, url: ads_performances_path, method: :get do |f| %>
         <select name='cols[]' multiple class="selectpicker" data-actions-box="true">
           <option value="channel_cont">channel</option>
           <option value="program_cont">program</option>
@@ -49,9 +49,6 @@
                 duration
               </th>
               <th>
-                size
-              </th>
-              <th>
                 cost
               </th>
               <th>
@@ -65,8 +62,8 @@
               </th>
             </tr>
           </thead>
-          <% @television_programs.each do |television_program| %>
-            <tbody>
+          <tbody>
+            <% @television_programs.each do |television_program| %>
               <tr>
                 <td>
                   <%= television_program.program %>
@@ -90,9 +87,6 @@
                   <%= television_program.duration %>
                 </td>
                 <td>
-                  <%= television_program.size %>
-                </td>
-                <td>
                   <%= television_program.cost %>
                 </td>
                 <td>
@@ -105,8 +99,8 @@
                   <%= television_program.created_at %>
                 </td>
               </tr>
-            </tbody>
             <% end %>
+          </tbody>
         </table>
       </div>
     </div>

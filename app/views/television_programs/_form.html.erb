@@ -9,6 +9,11 @@
     <%= f.label :program %><br />
     <%= f.text_field :program %>
   </div>
+
+  <div class="field">
+    <%= f.label :video %><br />
+    <%= f.file_field :video %>
+  </div>
   
   <div class="field">
     <%= f.label :level_1 %><br />
@@ -44,6 +49,105 @@
     <%= f.label :et_video %><br />
     <%= f.time_field :et_video %>
   </div>
+
+  <%= f.fields_for :post_buy do |ff| %>
+    <div class="field">
+      <%= ff.label :sector %><br />
+      <%= ff.text_field :sector, class: 'form-control' %>
+    </div>
+    
+    <div class="field">
+      <%= ff.label :category %><br />
+      <%= ff.text_field :category, class: 'form-control' %>
+    </div>
+    
+    <div class="field">
+      <%= ff.label :advertiser %><br />
+      <%= ff.text_field :advertiser, class: 'form-control' %>
+    </div>
+    
+    <div class="field">
+      <%= ff.label :product %><br />
+      <%= ff.text_field :product, class: 'form-control' %>
+    </div>
+    
+    <div class="field">
+      <%= ff.label :copy %><br />
+      <%= ff.text_field :copy, class: 'form-control' %>
+    </div>
+    
+    <div class="field">
+      <%= ff.label :break_no %><br />
+      <%= ff.text_field :break_no, class: 'form-control' %>
+    </div>
+    
+    <div class="field">
+      <%= ff.label :pos_in_break %><br />
+      <%= ff.text_field :pos_in_break, class: 'form-control' %>
+    </div>
+    
+    <div class="field">
+      <%= ff.label :break %><br />
+      <%= ff.text_field :break, class: 'form-control' %>
+    </div>
+    
+    <div class="field">
+      <%= ff.label :spot_type %><br />
+      <%= ff.text_field :spot_type, class: 'form-control' %>
+    </div>
+    
+    <div class="field">
+      <%= ff.label :size %><br />
+      <%= ff.text_field :size, class: 'form-control' %>
+    </div>
+    
+    <div class="field">
+      <%= ff.label :t_second_cost %><br />
+      <%= ff.text_field :t_second_cost, class: 'form-control' %>
+    </div>
+
+    <%= ff.fields_for :viewer do |fff| %>
+      <div class="field">
+        <%= fff.label :market %><br />
+        <%= fff.text_field :market, class: 'form-control' %>
+      </div>
+      
+      <div class="field">
+        <%= fff.label :activity %><br />
+        <%= fff.text_field :activity, class: 'form-control' %>
+      </div>
+      
+      <div class="field">
+        <%= fff.label :target %><br />
+        <%= fff.text_field :target, class: 'form-control' %>
+      </div>
+      
+      <div class="field">
+        <%= fff.label :day_part_or_variable %><br />
+        <%= fff.text_field :day_part_or_variable, class: 'form-control' %>
+      </div>
+      
+      <div class="field">
+        <%= fff.label :tVR %><br />
+        <%= fff.text_field :tVR, class: 'form-control' %>
+      </div>
+      
+      <div class="field">
+        <%= fff.label :share %><br />
+        <%= fff.text_field :share, class: 'form-control' %>
+      </div>
+      
+      <div class="field">
+        <%= fff.label :'000s' %><br />
+        <%= fff.text_field :'000s', class: 'form-control' %>
+      </div>
+      
+      <div class="field">
+        <%= fff.label :index %><br />
+        <%= fff.text_field :index, class: 'form-control' %>
+      </div>
+    <% end %>
+  <% end %>
 
   <div class="actions">
     <%= f.submit :submit %>

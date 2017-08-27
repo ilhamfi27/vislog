@@ -5,7 +5,7 @@
     <div class="col-md-3">
       Upload Data <br>
       <%= link_to 'Commercial', 'javascript:void(0);' %><br>
-      <%= link_to 'Program', new_post_buy_path %><br>
+      <%= link_to 'Program', new_television_program_path %><br>
       <%= link_to 'Audience', new_viewer_path %><br>
       <%= link_to 'Channel', new_channel_path %>
       <br> User Management <br>
@@ -71,27 +71,28 @@
                   <%= television_program.level_2 %>
                 </td>
                 <td>
-                  <%= television_program.start_time %>
+                  <%= to_hours(television_program.start_time) %>
                 </td>
                 <td>
-                  <%= television_program.end_time %>
+                  <%= to_hours(television_program.end_time) %>
                 </td>
                 <td>
-                  <%= television_program.duration %>
+                  <%= to_hours(television_program.duration) %>
                 </td>
                 <td>
                   <%= television_program.cost %>
                 </td>
                 <td>
-                  <%= television_program.st_video %>
+                  <%= to_hours(television_program.st_video) %>
                 </td>
                 <td>
-                  <%= television_program.et_video %>
+                  <%= to_hours(television_program.et_video) %>
                 </td>
                 <td>
                   <%= television_program.created_at %>
                 </td>
                 <td>
+                  <%= link_to "show", television_program_path(television_program.id) %>
                   <%= link_to "update", edit_television_program_path(television_program.id) %>
                   <%= link_to "delete", television_program_path(television_program.id), method: :delete %>
                 </td>

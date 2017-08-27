@@ -12,16 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap/bootstrap.min
 //= require lodash
 //= require bootstrap-select/bootstrap-select.min
 //= require jquery.dataTables.min
 //= require dataTables.bootstrap.min
+//= require video
 
 
-$(document).on("ready", function(){
-  $('.selectpicker').selectpicker();
+$(document).on('ready', function(){
+  $('.selectpicker').selectpicker('selectAll');
   $('#js-television-program-data-table, #js-channel-data-table').DataTable({
     responsive: true
   });

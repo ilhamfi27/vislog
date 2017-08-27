@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   helper_method :javascript_exists?
+  helper_method :to_hours
+  
   attr_accessor :login
 
   def record_activity(action)

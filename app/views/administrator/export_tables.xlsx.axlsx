@@ -1,0 +1,41 @@
+wb = xlsx_package.workbook
+
+table_header = wb.styles.add_style(
+  b: true,
+  alignment: {
+    horizontal: :center,
+    vertical: :center,
+    wrap_text: true
+  },
+  border: {
+    style: :thin,
+    color: "5550000"
+  }
+)
+table_body = wb.styles.add_style(
+  alignment: {
+    horizontal: :left,
+    vertical: :center,
+    wrap_text: true
+  },
+  border: {
+    style: :thin,
+    color: "5550000"
+  }
+)
+
+wb.add_worksheet(name: "Tables") do |sheet|
+  @tables.each do |table|
+    sheet.add_row [table[:table_name]] * table[:column_names].size, style: table_header
+
+    sheet.merge_cells "#{Axlsx::cell_r(0, sheet.rows.size - 1)}:#{Axlsx::cell_r(table[:column_names].size - 1, sheet.rows.size - 1)}"
+
+    sheet.add_row table[:column_names], style: table_header
+    table[:data].each do |datum|
+      sheet.add_row table[:column_names].map{|c| datum.send(c)}, style: table_body
+    end
+    sheet.add_row []
+    sheet.add_row []
+
+  end
+end

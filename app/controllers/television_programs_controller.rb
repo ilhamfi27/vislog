@@ -4,10 +4,20 @@ class TelevisionProgramsController < ApplicationController
 
   def new
     @television_program = TelevisionProgram.new
+    post_buy = @television_program.build_post_buy
+    post_buy.build_viewer
   end
 
   def create
     @television_program = TelevisionProgram.new(television_program_params)
+    @television_program.start_time = to_seconds(television_program_params[:start_time])
+    @television_program.end_time =  to_seconds(television_program_params[:end_time])
+    @television_program.st_video =  to_seconds(television_program_params[:st_video])
+    @television_program.et_video =  to_seconds(television_program_params[:et_video])
+    @television_program.duration =  @television_program.end_time - @television_program.start_time
+    movie = FFMPEG::Movie.new(params[:television_program][:video].path)
+    movie.transcode(params[:television_program][:video].path, video_codec: 'libx264')
+    binding.pry
     if @television_program.save
       redirect_to new_television_program_path, notice: 'Program was successfully added.'
     else
@@ -31,6 +41,8 @@ class TelevisionProgramsController < ApplicationController
     @television_program.destroy
     redirect_to administrator_path, notice: 'television_program was successfully destroyed.'
   end
+  
+  def show; end
 
 
   private
@@ -43,6 +55,6 @@ class TelevisionProgramsController < ApplicationController
     end
 
     def television_program_params
-      params.require(:television_program).permit(:program, :level_1, :level_2, :start_time, :end_time, :duration, :size, :cost, :st_video, :et_video, :channel_id)
+      params.require(:television_program).permit(:program, :level_1, :level_2, :start_time, :end_time, :duration, :size, :cost, :st_video, :et_video, :channel_id, :video, post_buy_attributes: [:sector, :category, :advertiser, :product, :copy, :break_no, :pos_in_break, :break, :spot_type, :size, :t_second_cost, viewer_attributes: [ :market, :activity, :target, :day_part_or_variable, :tVR, :share, :'000s', :index ] ] )
     end
 end
