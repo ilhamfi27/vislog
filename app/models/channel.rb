@@ -12,4 +12,5 @@
 class Channel < ActiveRecord::Base
   has_many :television_programs
   has_many :post_buys, through: :television_programs
+  has_many :viewers, through: :post_buys
 end

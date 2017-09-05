@@ -1,5 +1,6 @@
 class AdsPerformancesController < ApplicationController
-  before_action :program_search_result, only: [:home, :index]
+  before_action :program_search_result, only: [:index]
+  before_action :chart_data, only: [:index]
 
   def index
     respond_to do |format|
@@ -29,7 +30,7 @@ class AdsPerformancesController < ApplicationController
     end
 
     def chart_data
-      TelevisionProgram.all.includes(post_buy: [:viewer]).group(:channel).count
-      TelevisionProgram.all.includes(:channel, post_buy: [:viewer]).group(:channel).count
+      Channel.joins(post_buys: :viewer).group_by{|c| c.id}
+      asd
     end
 end
