@@ -1,7 +1,421 @@
-<% if @television_programs.present? %>
-  <% @television_programs.each do |p| %>
-    <%= p.program %>
-  <%end%>
-<% else %>
-  Gak ada
+<div class="hold-transition skin-blue sidebar-mini">
+  <div class="wrapper">
+    <div class="content-wrapper">
+      <section class="content-header">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="wadah-1 padding-all-10 box-shadow-1">
+              <h2 class="color-light-blue text-align-left">Data Searching</h2>
+              <form method="post" action="">
+                <div class="form-group">
+                    <label class="control-label">
+                      Category
+                    </label>
+                    <div class="">
+                        <select name="" class="form-control"
+                        style="margin-bottom: 10px">
+                      <option value="">--Choose--</option>
+                      <option value="">All Category</option>
+                      <option value="">Advertiser</option>
+                      <option value="">Category</option>
+                      <option value="">Channel</option>
+                      <option value="">Copy</option>
+                      <option value="">Level 1</option>
+                      <option value="">Level 2</option>
+                      <option value="">Product</option>
+                      <option value="">Program</option>
+                      <option value="">Sector</option>
+                      <option value="">Spot Type</option>
+                    </select>
+                        <select id="dates-field2" multiple="multiple"
+                        class="multiselect-ui form-control">
+                            <option value="cheese">Cheese</option>
+                            <option value="tomatoes">Tomatoes</option>
+                            <option value="mozarella">Mozzarella</option>
+                            <option value="mushrooms">Mushrooms</option>
+                            <option value="pepperoni">Pepperoni</option>
+                            <option value="onions">Onions</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label>Date Range :</label>
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" 
+                    id="reservation">
+                  </div>
+                </div>
+                <input type="submit" name="" value="Proceed" 
+                class="btn btn-default btn-dasar f-bg-green color-white">
+              </form>
+              <div style="clear: both"></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="wadah-1 box-shadow-1 padding-all-10">
+              <h2 class="color-dark-blue text-align-left">See The Chart</h2>
+              <form method="post" action="">
+                <div class="form-group">
+                  <label>Commercial :</label>
+                  <select name="" class="form-control">
+                    <option value="">--Choose--</option>
+                    <option value="">Commercial</option>
+                    <option value="">Non Commercial</option>
+                    <option value="">All Data</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Total Individuals :</label>
+                  <select name="" class="form-control">
+                    <option value="">--Choose--</option>
+                    <option value="">MF 15+UM</option>
+                  </select>
+                </div>
+                <a href="" style="margin-right: 10px"
+                class="btn btn-default btn-dasar f-bg-dark-blue color-white">
+                  Calculate
+                </a>
+                <a href="" style="margin-right: 10px"
+                class="btn btn-default btn-dasar f-bg-yellow color-white">
+                  Export Chart
+                </a>
+                <a href="" 
+                class="btn btn-default btn-dasar f-bg-red color-white">
+                  Export Table
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 15px;">
+          <div class="col-md-3">
+            <div class="wadah-1 box-shadow-1 item-dashboard">
+              <center>
+                <%= image_tag 'icon/1-dark-blue.png', style: 'height: 70px;margin-top: 10px' %>
+              </center>
+              <h2 class="text-align-center">11,862</h2>
+              <h4 class="text-align-center">No of Spot</h4>
+              <a href="" class="f-bg-dark-blue btn btn-default btn-dasar btn-full">
+                More Info &nbsp; <i class="fa fa-chevron-circle-right"></i>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="wadah-1 box-shadow-1 item-dashboard">
+              <center>
+                <%= image_tag 'icon/2-green.png', style: 'height: 70px;margin-top: 10px' %>
+              </center>
+              <h2 class="text-align-center">67, 891</h2>
+              <h4 class="text-align-center">Cost (IDR Billions)</h4>
+              <a href="" class="f-bg-green btn btn-default btn-dasar btn-full">
+                More Info &nbsp; <i class="fa fa-chevron-circle-right"></i>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="wadah-1 box-shadow-1 item-dashboard">
+              <center>
+                <%= image_tag 'icon/3-red.png', style: 'height: 70px;margin-top: 10px' %>
+              </center>
+              <h2 class="text-align-center">24, 128</h2>
+              <h4 class="text-align-center">GRP</h4>
+              <a href="" class="f-bg-red btn btn-default btn-dasar btn-full">
+                More Info &nbsp; <i class="fa fa-chevron-circle-right"></i>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="wadah-1 box-shadow-1 item-dashboard">
+              <center>
+                <%= image_tag 'icon/4-yellow.png', style: 'height: 70px;margin-top: 10px' %>
+              </center>
+              <h2 class="text-align-center">72, 123</h2>
+              <h4 class="text-align-center">CPRP</h4>
+              <a href="" class="f-bg-yellow btn btn-default btn-dasar btn-full">
+                More Info &nbsp; <i class="fa fa-chevron-circle-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="box box-light-blue box-shadow-1" style="margin-top: 20px;">
+          <div class="box-header with-border">
+            <h3 class="box-title">Total Spot for Each Channel</h3>
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" 
+              data-widget="collapse">
+                <i class="fa fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-box-tool" 
+                data-widget="remove">
+                <i class="fa fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="box-body">
+            <div class="chart">
+              <canvas id="barChart" style="height:230px"></canvas>
+            </div>
+          </div>
+        </div>
+        <button type="button" style="margin-top: 10px;" 
+        class="btn btn-default btn-dasar f-bg-light-blue color-white"
+        data-toggle="modal" data-target="#popup">
+          Pop Up
+        </button>
+        <!-- MODAL -->
+        <div class="modal fade" id="popup" role="dialog">
+          <div class="modal-dialog">
+            <!-- MODAL CONTENT -->
+            <div class="modal-content" style="width: 800px;">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                  &times;
+                </button>
+                <a href="" 
+                class="btn btn-default btn-dasar f-bg-light-blue color-white">
+                  Download Selected Video
+                </a>
+                <a href="" style="margin-left: 10px;" 
+                class="btn btn-default btn-dasar f-bg-yellow color-white">
+                  Export Table
+                </a>
+                <div class="dropdown" style="width: 300px;float: right;margin-right: 130px">
+                  <button type="button" 
+                  class="btn btn-default btn-dasar f-bg-grey padding-all-10 dropdown-toggle"
+                  data-toggle="dropdown">
+                    <i class="fa fa-plus"></i>
+                  </button>
+                  <ul class="dropdown-menu f-bg-red">
+                    <form method="post" action="">                    
+                      <li style="border-top: 1px solid #fff;">
+                        <a href="#">
+                          <input type="checkbox" name="">
+                        </a>
+                      </li>
+                      <li style="border-top: 1px solid #fff;">
+                        <a href="#" style="color:white;">
+                          <input type="checkbox" name="">
+                          Date
+                        </a>
+                      </li>
+                      <li style="border-top: 1px solid #fff;">
+                        <a href="#" style="color:white;">
+                          <input type="checkbox" name="">
+                          Channel
+                        </a>
+                      </li>
+                      <li style="border-top: 1px solid #fff;">
+                        <a href="#" style="color:white;">
+                          &nbsp;&nbsp;&nbsp;
+                          Program
+                        </a>
+                      </li>
+                      <li style="border-top: 1px solid #fff;">
+                        <a href="#" style="color:white;">
+                          &nbsp;&nbsp;&nbsp;
+                          Level 1
+                        </a>
+                      </li>
+                      <li style="border-top: 1px solid #fff;">
+                        <a href="#" style="color:white;">
+                          &nbsp;&nbsp;&nbsp;
+                          Level 2
+                        </a>
+                      </li>
+                      <li style="border-top: 1px solid #fff;">
+                        <a href="#" style="color:white;">
+                          &nbsp;&nbsp;&nbsp;
+                          . . .
+                        </a>
+                      </li>
+                    </form>
+                    </ul>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="box-body">
+                        <form method="post" action="" id="frm-example">
+                        <table id="example" class="table table-bordered table-striped">
+                          <thead>
+                          <tr>
+                            <th>
+                              <input name="select_all" value="1" id="example-select-all" 
+                              type="checkbox">
+                            </th>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Extn.</th>
+                            <th>Start Date</th>
+                            <th>Salary</th>
+                          </tr>
+                          </thead>
+                        </table>
+                        </form>
+                      </div>
+              </div>
+              <div class="modal-footer">
+                    <button type="button" class="btn btn-default" 
+                    data-dismiss="modal">
+                      Close
+                    </button>
+                  </div>
+            </div>
+          </div>
+        </div>
+        </section>
+    </div>
+    <footer class="main-footer">
+      <div class="pull-right hidden-xs">
+        <b>Version</b> 1.0
+      </div>
+      <strong>
+        Copyright &copy; 2017
+        <a href="https://adminlte.io">Cipta Global Integral</a>.
+      </strong> All rights reserved.
+    </footer>
+    <div style="clear: both"></div>
+  </div>
+  <div style="clear: both"></div>
+</div>
+<% content_for :javascript_in_file do %>
+  <script type="text/javascript">
+    $(function(){
+      $('#reservation').daterangepicker(
+        {
+            locale: {
+              format: 'DD-MM-YYYY'
+            }
+        }
+      );
+
+      $('.multiselect-ui').multiselect({
+          includeSelectAllOption: true
+        });
+        
+      var areaChartData = {
+        labels  : ['TRANS7', 'RCTI', 'SCTV', 'TRANS TV', 'GTV', 'TVM', 'MNC TV', 'ANTV'],
+            datasets: [
+              {
+                label               : 'Channel',
+                fillColor           : 'rgba(60,141,188,0.9)',
+                strokeColor         : 'rgba(60,141,188,0.8)',
+                pointColor          : '#3b8bba',
+                pointStrokeColor    : 'rgba(60,141,188,1)',
+                pointHighlightFill  : '#fff',
+                pointHighlightStroke: 'rgba(60,141,188,1)',
+                data                : [1200, 1700, 1500, 1300, 1100, 1400, 1300, 1000]
+              }
+          ]
+        }
+      var barChartCanvas                   = $('#barChart').get(0).getContext('2d');
+        var barChart                         = new Chart(barChartCanvas);
+        var barChartData                     = areaChartData;
+        barChartData.datasets[0].fillColor   = '#4A89DC';
+        barChartData.datasets[0].strokeColor = '#4A89DC';
+        barChartData.datasets[0].pointColor  = '#4A89DC';
+        var barChartOptions                  = {
+          //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+          scaleBeginAtZero        : true,
+          //Boolean - Whether grid lines are shown across the chart
+          scaleShowGridLines      : true,
+          //String - Colour of the grid lines
+          scaleGridLineColor      : 'rgba(0,0,0,.05)',
+          //Number - Width of the grid lines
+          scaleGridLineWidth      : 1,
+          //Boolean - Whether to show horizontal lines (except X axis)
+          scaleShowHorizontalLines: true,
+          //Boolean - Whether to show vertical lines (except Y axis)
+          scaleShowVerticalLines  : true,
+          //Boolean - If there is a stroke on each bar
+          barShowStroke           : true,
+          //Number - Pixel width of the bar stroke
+          barStrokeWidth          : 2,
+          //Number - Spacing between each of the X value sets
+          barValueSpacing         : 5,
+          //Number - Spacing between data sets within X values
+          barDatasetSpacing       : 1,
+          //Boolean - whether to make the chart responsive
+          responsive              : true,
+          maintainAspectRatio     : true
+        };
+
+        barChartOptions.datasetFill = false;
+        barChart.Bar(barChartData, barChartOptions);
+        var table = $('#example').DataTable({
+          'ajax': 'https://api.myjson.com/bins/1us28',  
+          'columnDefs': [{
+             'targets': 0,
+             'searchable':false,
+             'orderable':false,
+             'className': 'dt-body-center',
+             'render': function (data, type, full, meta){
+                 return '<input type="checkbox" name="id[]" value="' 
+                    + $('<div/>').text(data).html() + '">';
+             }
+          }],
+          'order': [1, 'asc'],
+          'paging'      : true,
+          'lengthChange': false,
+          'searching'   : true,
+          'ordering'    : true,
+          'info'        : true,
+          'autoWidth'   : false
+       });
+
+       // Handle click on "Select all" control
+       $('#example-select-all').on('click', function(){
+          // Check/uncheck all checkboxes in the table
+          var rows = table.rows({ 'search': 'applied' }).nodes();
+          $('input[type="checkbox"]', rows).prop('checked', this.checked);
+       });
+
+       // Handle click on checkbox to set state of "Select all" control
+       $('#example tbody').on('change', 'input[type="checkbox"]', function(){
+          // If checkbox is not checked
+          if(!this.checked){
+             var el = $('#example-select-all').get(0);
+             // If "Select all" control is checked and has 'indeterminate' property
+             if(el && el.checked && ('indeterminate' in el)){
+                // Set visual state of "Select all" control 
+                // as 'indeterminate'
+                el.indeterminate = true;
+             }
+          }
+       });
+        
+       $('#frm-example').on('submit', function(e){
+          var form = this;
+
+          // Iterate over all checkboxes in the table
+          table.$('input[type="checkbox"]').each(function(){
+             // If checkbox doesn't exist in DOM
+             if(!$.contains(document, this)){
+                // If checkbox is checked
+                if(this.checked){
+                   // Create a hidden element 
+                   $(form).append(
+                      $('<input>')
+                         .attr('type', 'hidden')
+                         .attr('name', this.name)
+                         .val(this.value)
+                   );
+                }
+             } 
+          });
+
+          // FOR TESTING ONLY
+          
+          // Output form data to a console
+          $('#example-console').text($(form).serialize()); 
+          console.log("Form submission", $(form).serialize()); 
+           
+          // Prevent actual form submission
+          e.preventDefault();
+       });
+    });
+  </script>
 <% end %>

@@ -1,0 +1,174 @@
+<header class="main-header header-wrapper">
+  <a href="index2.html" class="logo" style="margin-left: 200px">
+    <span class="logo-mini">
+      <%= image_tag 'icon/monitor.png', style: 'height: 30px' %>
+    </span>
+    <span class="logo-lg">
+      <%= image_tag 'icon/monitor.png', style: 'height: 35px;margin-right: 10px' %>
+      VISLOG
+    </span>
+  </a>
+  <nav class="navbar navbar-static-top">
+    <div class="navbar-custom-menu">
+      <ul class="nav navbar-nav">
+        <li class="dropdown menu-dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-th-large fa-2x"></i>
+          </a>
+          <ul class="dropdown-menu row box-shadow-1" style="width: 300px">
+                  <%= link_to dashboard_path do %>
+                    <li class="col-xs-4">
+                      <center>
+                        <i class="fa fa-dashboard color-light-blue"></i>
+                        <p class="color-light-blue" 
+                        style="font-size: 8pt">
+                          Dashboard
+                        </p>
+                      </center>
+                    </li>
+                  <% end %>
+                  <%= link_to ads_performances_path do %>
+                    <li class="col-xs-4">
+                      <center>
+                        <i class="fa fa-certificate color-light-blue"></i>
+                        <p class="color-light-blue" 
+                        style="font-size: 8pt">
+                          Ads Performance
+                        </p>
+                      </center>
+                    </li>
+                  <% end %>
+                  <a href="clip-library.html">
+                    <li class="col-xs-4">
+                      <center>
+                        <i class="fa fa-film color-light-blue"></i>
+                        <p class="color-light-blue" 
+                        style="font-size: 8pt">
+                          Clip Library
+                        </p>
+                      </center>
+                    </li>
+                  </a>
+                  <a href="competitive-analysis.html">
+                    <li class="col-xs-4">
+                      <center>
+                        <i class="fa fa-user-secret color-light-blue"></i>
+                        <p class="color-light-blue" 
+                        style="font-size: 8pt">
+                          Competitive Analysis
+                        </p>
+                      </center>
+                    </li>
+                  </a>
+                  <a href="tv-analysis.html">
+                    <li class="col-xs-4">
+                      <center>
+                        <i class="fa fa-tv color-light-blue"></i>
+                        <p class="color-light-blue" 
+                        style="font-size: 8pt">
+                          TV Analysis
+                        </p>
+                      </center>
+                    </li>
+                  </a>
+                  <a href="advance-search.html">
+                    <li class="col-xs-4">
+                      <center>
+                        <i class="fa fa-search color-light-blue"></i>
+                        <p class="color-light-blue" 
+                        style="font-size: 8pt">
+                          Advance Search
+                        </p>
+                      </center>
+                    </li>
+                  </a>
+                  <a href="tutorial.html">
+                    <li class="col-xs-4">
+                      <center>
+                        <i class="fa fa-play color-light-blue"></i>
+                        <p class="color-light-blue" 
+                        style="font-size: 8pt">
+                          Tutorial
+                        </p>
+                      </center>
+                    </li>
+                  </a>
+                  <a href="update-information.html">
+                    <li class="col-xs-4">
+                      <center>
+                        <i class="fa fa-cloud-upload color-light-blue"></i>
+                        <p class="color-light-blue" 
+                        style="font-size: 8pt">
+                          Update Information
+                        </p>
+                      </center>
+                    </li>
+                  </a>
+                  <a href="customer-service.html">
+                    <li class="col-xs-4">
+                      <center>
+                        <i class="fa fa-phone color-light-blue"></i>
+                        <p class="color-light-blue" 
+                        style="font-size: 8pt">
+                          Customer Service
+                        </p>
+                      </center>
+                    </li>
+                  </a>
+                  <a href="pencarian-utama.html">
+                    <li class="col-xs-4">
+                      <center>
+                        <i class="fa fa-upload color-light-blue"></i>
+                        <p class="color-light-blue" 
+                        style="font-size: 8pt">
+                          Upload Data
+                        </p>
+                      </center>
+                    </li>
+                  </a>
+                  <a href="pencarian-utama.html">
+                    <li class="col-xs-4">
+                      <center>
+                        <i class="fa fa-gear color-light-blue"></i>
+                        <p class="color-light-blue" 
+                        style="font-size: 8pt">
+                          Administrator
+                        </p>
+                      </center>
+                    </li>
+                  </a>
+                </ul>
+        </li>
+        <li class="dropdown user user-menu">
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <p style="float: left;margin: 2px 10px 0px 0px">Log Out</p>
+                  <i class="fa fa-sign-out fa-2x"></i>
+                <% end %>
+            </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<aside class="main-sidebar" style="background-color: #4A89DC !important;">
+  <section class="sidebar">
+    <div class="user-sidebar user-panel" style="margin-top: -40px">
+      <%= image_tag current_user.avatar, class: 'img-responsive img-circle', alt: 'User Image', style: 'width: 70%;margin: 0 auto;' %>
+      <h4 class="color-white text-center">
+        <%= current_user.name %>
+      </h4>
+      <h5 class="color-white text-center">
+        <%= current_user.username %>
+      </h5>
+      <p class="text-center color-white">
+        <%= current_user.email %>
+      </p>
+      <center>
+      <%= link_to edit_user_registration_path do %>
+        <button class="btn btn-default btn-khusus">
+          Update Profile
+        </button>
+      <% end %>
+      </center>
+    </div>
+  </section>
+</aside>

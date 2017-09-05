@@ -1,0 +1,197 @@
+body{
+	font-size: 12pt;
+	font-family: 'Muli', sans-serif;
+	color: #000;
+	margin: 0px auto;
+}
+
+p, h1, h2, h3, h4, h5, h6, span{
+	margin: 0px;
+	padding: 0px;
+}
+
+.color-white{
+	color: #fff;
+}
+
+.color-yellow{
+	color: #FFCE54;
+}
+
+.color-light-blue{
+	color: #5D9CEC;
+}
+
+.color-dark-blue{
+	color: #4A89DC;
+}
+
+.color-black{
+	color: #434A54;
+}
+
+.color-green{
+	color: #48CFAD;
+}
+
+.color-red{
+	color: #ED5565;
+}
+
+.color-grey{
+	color: #656d78;
+}
+
+.bg-yellow{
+	background-color: #FFCE54;
+}
+
+.bg-light-blue{
+	background-color: #5D9CEC;
+}
+
+.bg-dark-blue{
+	background-color: #4A89DC;
+}
+
+.bg-black{
+	background-color: #434A54;
+}
+
+.bg-white{
+	background-color: #fff;
+}
+
+.bg-green{
+	background-color: #48CFAD;
+}
+
+.bg-red{
+	background-color: #ED5565;
+}
+
+.bg-grey{
+	background-color: #ddd;
+}
+
+.text-align-center{
+	text-align: center !important;
+}
+
+.text-align-left{
+	text-align: left !important;
+}
+
+.text-align-justify{
+	text-align: justify;
+}
+
+.text-align-right{
+	text-align: right;
+}
+
+.text-transform-uppercase{
+	text-transform: uppercase;
+}
+
+.btn-dasar{
+	border: 0px;
+	box-shadow: none;
+	border-radius: 3px !important;
+}
+
+/******************************** SIGN IN STYLING ********************************/
+.sign-in-wrapper{
+	height: 100vh;
+	background-image: image-url(sign-in-wrapper-blur);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.sign-in{
+	width: 750px;
+	height: 310px;
+	background-color: #fff;
+	background-image: image-url(sign-in-wrapper);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	margin: 0 auto;
+	position: relative;
+	top: 25%;
+}
+
+.sign-in-1, .sign-in-2{
+	height: 310px;
+	padding: 30px;
+}
+
+.sign-in-1{
+
+}
+
+.sign-in-1 img, .sign-in-1 p, .sign-in-1 span{
+	margin: 0 auto;
+}
+
+.sign-in-1 img{
+	height: 80px;
+}
+
+.sign-in-1 h2{
+	font-size: 18pt;
+	font-weight: lighter;
+	text-transform: uppercase;
+	color: #fff;
+	text-align: center;
+	margin-top: 10px;
+}
+
+.sign-in-1 h3{
+	font-size: 11pt;
+	color: #fff;
+	text-align: center;
+	margin-top: 5px;
+}
+
+.sign-in-1 p{
+	font-size: 12pt;
+	font-style: italic;
+	text-align: center;
+	margin-top: 20px;
+	color: #fff;
+}
+
+.sign-in-1 h6{
+	font-size: 8pt;
+	color: #fff;
+	text-align: center;
+	margin-top: 25px;
+}
+
+.sign-in-2 label{
+	color: #656d78;
+	font-size: 12pt;
+	margin-bottom: 10px;
+	font-weight: 400;
+}
+
+.sign-in-2 input[type=submit]{
+	width: 100%;
+	margin-top: 10px;
+	transition: 0.5s;
+}
+
+.sign-in-2 input[type=submit]:hover{
+	background-color: #346fbd;
+	color: #fff;
+}
+
+/******************************** BACK END STYLING ********************************/
+
+.header-wrapper{
+	height: 300px;
+}

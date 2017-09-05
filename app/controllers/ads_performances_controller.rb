@@ -1,7 +1,12 @@
 class AdsPerformancesController < ApplicationController
   before_action :program_search_result, only: [:home, :index]
 
-  def index; end
+  def index
+    respond_to do |format|
+      format.html
+      format.json { render :json => program_search_result }
+    end
+  end
 
   def export_data
     @tables = [TelevisionProgram, PostBuy, Viewer].map do |model|
@@ -19,7 +24,12 @@ class AdsPerformancesController < ApplicationController
 
   private
     def program_search_result
-      @search = TelevisionProgram.dashboard_search(params[:keyword], params[:cols])
+      @search = TelevisionProgram.dashboard_search(params[:keyword], params[:cols], params[:date])
       @television_programs = @search.result
+    end
+
+    def chart_data
+      TelevisionProgram.all.includes(post_buy: [:viewer]).group(:channel).count
+      TelevisionProgram.all.includes(:channel, post_buy: [:viewer]).group(:channel).count
     end
 end

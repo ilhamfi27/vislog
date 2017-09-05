@@ -7,7 +7,7 @@ class DashboardController < ApplicationController
 
   private
     def program_search_result
-      @search = TelevisionProgram.dashboard_search(params[:keyword], params[:cols])
+      @search = TelevisionProgram.dashboard_search(params[:keyword], params[:cols], params[:date])
       @television_programs = @search.result
     end
 end

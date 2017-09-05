@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   helper_method :javascript_exists?
+  helper_method :stylesheet_exists?
   helper_method :to_hours
   
   attr_accessor :login
@@ -35,7 +36,13 @@ class ApplicationController < ActionController::Base
   def javascript_exists?(script)
     extensions = %w(.coffee .erb .coffee.erb) + [""]
     extensions.inject(false) do |truth, extension|
-      truth || File.exists?(File.join(Rails.root, 'app', 'assets', 'javascripts', "#{script}.js#{extension}"))
+      truth || File.exists?(File.join(Rails.root, 'app', 'assets', 'javascripts', "#{script}.js.#{extension}"))
+    end
+  end
+  def stylesheet_exists?(stylesheet)
+    extensions = %w(.scss .erb .scss.erb) + [""]
+    extensions.inject(false) do |truth, extension|
+      truth || File.exists?(File.join(Rails.root, 'app', 'assets', 'stylesheets', "#{stylesheet}.css.#{extension}"))
     end
   end
 

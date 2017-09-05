@@ -17,13 +17,21 @@
 //= require bootstrap-select/bootstrap-select.min
 //= require jquery.dataTables.min
 //= require dataTables.bootstrap.min
+//= require adminlte/fastclick
+//= require adminlte/moment.min
+//= require adminlte/daterangepicker
+//= require adminlte/adminlte.min
+//= require adminlte/jquery.sparkline.min
+//= require adminlte/jquery-jvectormap-1.2.2.min
+//= require adminlte/jquery-jvectormap-world-mill-en
+//= require adminlte/jquery.slimscroll.min
+//= require adminlte/Chart
+//= require adminlte/demo
+//= require multiselect.min
 //= require video
 
-
 $(document).on('ready', function(){
-  $('.selectpicker').selectpicker('selectAll');
   $('#js-television-program-data-table, #js-channel-data-table').DataTable({
     responsive: true
   });
 });
-
