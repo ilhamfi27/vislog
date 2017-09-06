@@ -42,7 +42,11 @@ class TelevisionProgramsController < ApplicationController
     redirect_to administrator_path, notice: 'television_program was successfully destroyed.'
   end
   
-  def show; end
+  def show
+    respond_to do |format|
+      format.js
+    end
+  end
 
 
   private

@@ -1,0 +1,8 @@
+$('body').append('<%= escape_javascript(render("shared/show_video_modal_on_ads_performance")) %>');
+$('#css-video-modal').modal('show');
+
+videojs('js-video-player', {
+  controls: true,
+  autoplay: false,
+  preload: 'auto'
+});
