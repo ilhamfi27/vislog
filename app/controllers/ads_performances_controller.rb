@@ -30,7 +30,8 @@ class AdsPerformancesController < ApplicationController
     end
 
     def chart_data
-      Channel.joins(post_buys: :viewer).group_by{|c| c.id}
-      asd
+      programs = Channel.joins(:viewers).select('channels.id, channels.name AS channel_name, sum(viewers."000s") AS sum_of_rating').group('television_programs.channel_id, channels.id, channels.name, viewers."000s"')
+      @channel_names = programs.map(&:channel_name)
+      @channel_ratings = programs.map(&:sum_of_rating)
     end
 end

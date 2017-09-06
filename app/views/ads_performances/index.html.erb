@@ -147,7 +147,7 @@
                           <td> <%= to_hours(television_program.st_video) %> </td>
                           <td> <%= to_hours(television_program.et_video) %> </td>
                           <td> <%= television_program.created_at %> </td>
-                          <td> <%= link_to 'preview', television_program_path(television_program.id)%> </td>
+                          <td> <%= link_to 'preview', television_program_path(television_program.id),id: 'preview-video-link', remote: :true%> </td>
                         </tr>
                       <% end%>
                     <% end %>
@@ -293,6 +293,7 @@
 </div> <!-- 1 -->
 <% content_for :javascript_in_file do %>
   <script type="text/javascript">
+
     $(function(){
       $('#reservation').daterangepicker(
         {
@@ -306,7 +307,7 @@
           includeSelectAllOption: true
       });
       var areaChartData = {
-        labels  : ['TRANS7', 'RCTI', 'SCTV', 'TRANS TV', 'GTV', 'TVM', 'MNC TV', 'ANTV'],
+        labels  : <%= @channel_names.to_json.html_safe %>,
             datasets: [
               {
                 label               : 'Channel',
@@ -316,7 +317,7 @@
                 pointStrokeColor    : 'rgba(60,141,188,1)',
                 pointHighlightFill  : '#fff',
                 pointHighlightStroke: 'rgba(60,141,188,1)',
-                data                : [1200, 1700, 1500, 1300, 1100, 1400, 1300, 1000]
+                data                : <%= @channel_ratings.to_json.html_safe %>
               }
           ]
         }
