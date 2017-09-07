@@ -1,60 +1,61 @@
-<div class="hold-transition skin-blue sidebar-mini">
-  <div class="wrapper">
-    <div class="content-wrapper">
-      <section class="content-header">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="box-shadow-1 padding-all-10">
-              <h2 class="color-light-blue text-align-left">Data Searching</h2>
-              <%= search_form_for @search, url: dashboard_path, method: :get do |f| %>
-                <div class="form-group">
-                  <label class="control-label">
-                    Category
-                  </label>
-                  <div class="">
-                    <select name="cols[]" id="dates-field2" multiple="multiple" class="multiselect-ui form-control">
-                      <option value="channel_cont">channel</option>
-                      <option value="program_cont">program</option>
-                      <option value="level_1_cont">level_1</option>
-                      <option value="level_2_cont">level_2</option>
-                      <option value="cost_eq">cost</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label>Search Keyword :</label>
-                  <input type="text" name="keyword" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label>Date Range :</label>
-                  <div class="input-group" style="margin-top: 10px;;">
-                    <div class="input-group-addon">
-                      <i class="fa fa-calendar"></i>
-                    </div>
-                    <input type="text" name="date" class="form-control pull-right" id="reservation">
-                  </div>
-                </div>
-                <input type="submit" name="" value="Proceed" 
-                class="btn btn-default btn-dasar f-bg-dark-blue color-white">
-              <% end %>
+ <% content_for :navbar do %>
+      <%= render 'shared/navbar' %>
+ <% end %>
+
+<% content_for :body_class, "hold-transition skin-blue sidebar-mini" %>
+
+<div class="content-wrapper">
+  <section class="content-header">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box-shadow-1 padding-all-10">
+          <h2 class="color-light-blue text-align-left">Data Searching</h2>
+          <%= search_form_for @search, url: dashboard_path, method: :get do |f| %>
+            <div class="form-group">
+              <label class="control-label">
+                Category
+              </label>
+              <div class="">
+                <select name="cols[]" id="dates-field2" multiple="multiple" class="multiselect-ui form-control">
+                  <option value="channel_cont">channel</option>
+                  <option value="program_cont">program</option>
+                  <option value="level_1_cont">level_1</option>
+                  <option value="level_2_cont">level_2</option>
+                  <option value="cost_eq">cost</option>
+                </select>
+              </div>
             </div>
-          </div>
+            <div class="form-group">
+              <label>Search Keyword :</label>
+              <input type="text" name="keyword" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Date Range :</label>
+              <div class="input-group" style="margin-top: 10px;;">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" name="date" class="form-control pull-right" id="reservation">
+              </div>
+            </div>
+            <input type="submit" name="" value="Proceed" 
+            class="btn btn-default btn-dasar f-bg-dark-blue color-white">
+          <% end %>
         </div>
-      </section>
-    </div>
-    <footer class="main-footer">
-      <div class="pull-right hidden-xs">
-        <b>Version</b> 1.0
       </div>
-      <strong>
-        Copyright &copy; 2017
-        <a href="https://adminlte.io">Cipta Global Integral</a>.
-      </strong> All rights reserved.
-    </footer>
-    <div style="clear: both"></div>
-  </div>
-  <div style="clear: both"></div>
+    </div>
+  </section>
 </div>
+<footer class="main-footer">
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 1.0
+  </div>
+  <strong>
+    Copyright &copy; 2017
+    <a href="https://adminlte.io">Cipta Global Integral</a>.
+  </strong> All rights reserved.
+</footer>
+<div style="clear: both"></div>
 <% content_for :javascript_in_file do %>
   <script type="text/javascript">
     $(function(){

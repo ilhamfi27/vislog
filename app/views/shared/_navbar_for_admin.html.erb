@@ -1,5 +1,5 @@
 <header class="main-header header-wrapper">
-  <a href="index2.html" class="logo" style="margin-left: 200px">
+  <%= link_to administrator_path, class: 'logo' do %>
     <span class="logo-mini">
       <%= image_tag 'icon/monitor.png', style: 'height: 30px' %>
     </span>
@@ -7,15 +7,18 @@
       <%= image_tag 'icon/monitor.png', style: 'height: 35px;margin-right: 10px' %>
       VISLOG
     </span>
-  </a>
+  <% end %>
   <nav class="navbar navbar-static-top">
+    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+      <span class="sr-only">Toogle Navigation</span>
+    </a>
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
         <li class="dropdown menu-dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-th-large fa-2x"></i>
           </a>
-          <ul class="dropdown-menu row box-shadow-1" style="width: 300px">
+                <ul class="dropdown-menu row box-shadow-1" style="width: 300px">
                   <%= link_to dashboard_path do %>
                     <li class="col-xs-4">
                       <center>
@@ -141,36 +144,120 @@
                   <% end %>
                 </ul>
         </li>
-        <li class="dropdown user user-menu">
-                <%= link_to destroy_user_session_path, method: :delete do %>
-                  <p style="float: left;margin: 2px 10px 0px 0px">Log Out</p>
-                  <i class="fa fa-sign-out fa-2x"></i>
-                <% end %>
+            <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <%= image_tag current_user.avatar, class: 'user-image', alt: 'User Image' %>
+                  <span class="hidden-xs" style="font-size: 12pt;"><%= current_user.name %></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <!-- User image -->
+                  <li class="user-header">
+                    <%= image_tag current_user.avatar, class: 'user-image', alt: 'User Image' %>
+                    <p style="margin-top: 3px">
+                      <%= current_user.name %> - <%= current_user.admin? ? "Admin" : "User" %>
+                      <small>Member since Nov. 2012</small>
+                    </p>
+                  </li>
+                  <!-- Menu Footer-->
+                  <li class="user-footer">
+                    <div class="pull-left">
+                      <%= link_to "Profile", edit_user_registration_path, class: 'btn btn-default btn-flat' %>
+                    </div>
+                    <div class="pull-right">
+                      <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-default btn-flat' %>
+                    </div>
+                  </li>
+                </ul>
             </li>
       </ul>
     </div>
   </nav>
 </header>
-<aside class="main-sidebar" style="background-color: #4A89DC !important;">
+<aside class="main-sidebar" style="margin-top: 30px;">
   <section class="sidebar">
-    <div class="user-sidebar user-panel" style="margin-top: -40px">
-      <%= image_tag current_user.avatar, class: 'img-responsive img-circle', alt: 'User Image', style: 'width: 70%;margin: 0 auto;' %>
-      <h4 class="color-white text-center">
-        <%= current_user.name %>
-      </h4>
-      <h5 class="color-white text-center">
-        <%= current_user.username %>
-      </h5>
-      <p class="text-center color-white">
-        <%= current_user.email %>
-      </p>
-      <center>
-      <%= link_to edit_user_registration_path do %>
-        <button class="btn btn-default btn-khusus">
-          Update Profile
-        </button>
-      <% end %>
-      </center>
-    </div>
+    <ul class="sidebar-menu" data-widget="tree">
+      <li class="treeview">
+        <a href="" >
+          <i class="fa fa-upload" style="color: #48CFAD"></i> 
+          <span class="color-green">Upload Data</span>
+          <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+        </a>
+        <ul class="treeview-menu">
+          <li>
+            <a href="upload-data-commercial.html">
+              <i class="fa fa-circle-o"></i>Commercial
+            </a>
+          </li>
+          <li>
+            <%= link_to new_television_program_path do %>
+              <i class="fa fa-circle-o"></i>Program
+            <% end %>
+          </li>
+          <li>
+            <a href="upload-data-audience.html">
+              <i class="fa fa-circle-o"></i>Audience
+            </a>
+          </li>
+          <li>
+            <%= link_to new_channel_path do %>
+              <i class="fa fa-circle-o"></i>Channel
+            <% end %>
+          </li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="" >
+          <i class="fa fa-user-o" style="color: #48CFAD"></i> 
+          <span class="color-green">User Management</span>
+          <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+        </a>
+        <ul class="treeview-menu">
+          <li>
+            <%= link_to new_user_invitation_path do %>
+              <i class="fa fa-circle-o"></i>Registration
+            <% end %>
+          </li>
+          <li>
+            <%= link_to user_activities_path do %>
+              <i class="fa fa-circle-o"></i>Activities Log
+            <% end %>
+          </li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="video-directory.html">
+          <i class="fa fa-play-circle-o" style="color: #48CFAD"></i> 
+          <span class="color-green">Video Directory</span>
+        </a>
+      </li>
+      <li class="treeview">
+        <a href="tvr-weight.html">
+          <i class="fa fa-tv" style="color: #48CFAD"></i> 
+          <span class="color-green">TVR Weight</span>
+        </a>
+      </li>
+      <li class="treeview">
+        <a href="daypart.html">
+          <i class="fa fa-calendar-o" style="color: #48CFAD"></i> 
+          <span class="color-green">Daypart</span>
+        </a>
+      </li>
+      <li class="treeview">
+        <a href="tutorial-video.html">
+          <i class="fa fa-play" style="color: #48CFAD"></i> 
+          <span class="color-green">Tutorial Videos</span>
+        </a>
+      </li>
+      <li class="active treeview">
+        <a href="dashboard-backend.html" >
+          <i class="fa fa-dashboard" style="color: #48CFAD"></i> 
+          <span class="color-green">Dashboard</span>
+        </a>
+      </li>
+    </ul>
   </section>
 </aside>

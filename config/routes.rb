@@ -26,6 +26,7 @@
 #                                   PATCH  /users/invitation(.:format)             users/invitations#update
 #                                   PUT    /users/invitation(.:format)             users/invitations#update
 #                              root GET    /                                       welcome#index
+#                   user_activities GET    /user_activities(.:format)              user_activities#index
 #                          channels GET    /channels(.:format)                     channels#index
 #                                   POST   /channels(.:format)                     channels#create
 #                       new_channel GET    /channels/new(.:format)                 channels#new
@@ -87,6 +88,7 @@ Rails.application.routes.draw do
   }
   root 'welcome#index'
 
+  resources :user_activities, only: [:index]
   resources :channels
   resources :television_programs
   resources :ads_performances

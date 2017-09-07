@@ -9,7 +9,7 @@
   <% end %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= yield (:body_class) %>">
 <% if alert %>
   <p class="alert"><%= alert %></p>
 <% end %>
@@ -17,11 +17,19 @@
 <% if notice %>
   <p class="notice"><%= notice %></p>
 <% end %>
-<% if user_signed_in? %>
-  <%= render 'shared/navbar' %>
+
+<div class="wrapper">
+  <% if user_signed_in? %>
+    <% if content_for?(:admin_navbar) %>
+      <%= yield(:admin_navbar) %>
+    <% else %>
+      <%= yield(:navbar) %>
+    <% end %>
   <% end %>
 
-<%= yield %>
+  <%= yield %>
+</div>
+<div style="clear: both"></div>
 <%= yield :javascript_in_file %>
 
 </body>

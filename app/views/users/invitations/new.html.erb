@@ -1,12 +1,36 @@
-<h2><%= t "devise.invitations.new.header" %></h2>
+ <% content_for :admin_navbar do %>
+      <%= render 'shared/navbar_for_admin' %>
+ <% end %>
 
-<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
-  <%= devise_error_messages! %>
+<% content_for :body_class, "hold-transition skin-blue sidebar-mini" %>
 
-<% resource.class.invite_key_fields.each do |field| -%>
-  <p><%= f.label field %><br />
-  <%= f.text_field field %></p>
-<% end -%>
+ <div class="content-wrapper">
+  <section class="content-header">
+    <div class="row">
+      <div class="col-md-12 padding-all-10">
+        <h2><%= t "devise.invitations.new.header" %></h2>
 
-  <p><%= f.submit t("devise.invitations.new.submit_button") %></p>
-<% end %>
+        <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
+          <%= devise_error_messages! %>
+
+        <% resource.class.invite_key_fields.each do |field| -%>
+          <p><%= f.label field %><br />
+          <%= f.text_field field %></p>
+        <% end -%>
+
+          <p><%= f.submit t("devise.invitations.new.submit_button") %></p>
+        <% end %>
+      </div>
+    </div>
+  </section>
+</div>
+<footer class="main-footer">
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 1.0
+  </div>
+  <strong>
+    Copyright &copy; 2017
+    <a href="https://adminlte.io">Cipta Global Integral</a>.
+  </strong> All rights reserved.
+</footer>
+<div style="clear: both"></div>

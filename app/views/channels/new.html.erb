@@ -1,4 +1,26 @@
-<div class="container">
-  <h1>new channel</h1>
-  <%= render 'form' %>
+<% content_for :body_class, "hold-transition skin-blue sidebar-mini" %>
+
+<% content_for :admin_navbar do %>
+  <%= render 'shared/navbar_for_admin' %>
+<% end %>
+
+<div class="content-wrapper">
+  <section class="content-header">
+    <div class="row">
+      <div class="col-md-12 padding-all-10">
+        <h1>new channel</h1>
+        <%= render 'form' %>
+      </div>
+    </div>
+  </section>
 </div>
+<footer class="main-footer">
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 1.0
+  </div>
+  <strong>
+    Copyright &copy; 2017
+    <a href="https://adminlte.io">Cipta Global Integral</a>.
+  </strong> All rights reserved.
+</footer>
+<div style="clear: both"></div>

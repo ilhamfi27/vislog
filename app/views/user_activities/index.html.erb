@@ -1,0 +1,86 @@
+<% content_for :body_class, "hold-transition skin-blue sidebar-mini" %>
+
+<% content_for :admin_navbar do %>
+  <%= render 'shared/navbar_for_admin' %>
+<% end %>
+
+<div class="content-wrapper">
+  <section class="content-header">
+    <div class="row">
+      <div class="col-md-12 padding-all-10">
+        <div class="table-responsive">
+          <table id="js-television-program-data-table">
+            <thead>
+              <tr>
+                <th>
+                  username
+                </th>
+                <th>
+                  note
+                </th>
+                <th>
+                  user_ip
+                </th>
+                <th>
+                  browser
+                </th>
+                <th>
+                  controller
+                </th>
+                <th>
+                  action
+                </th>
+                <th>
+                  params
+                </th>
+                <th>
+                  created_at
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @activity_record.each do |record| %>
+                <tr>
+                  <td>
+                    <%= record.username %>
+                  </td>
+                  <td>
+                    <%= record.note %>
+                  </td>
+                  <td>
+                    <%= record.user_ip %>
+                  </td>
+                  <td>
+                    <%= record.browser %>
+                  </td>
+                  <td>
+                    <%= record.controller %>
+                  </td>
+                  <td>
+                    <%= record.action %>
+                  </td>
+                  <td>
+                    <%= record.params %>
+                  </td>
+                  <td>
+                    <%= record.created_at %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<footer class="main-footer">
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 1.0
+  </div>
+  <strong>
+    Copyright &copy; 2017
+    <a href="https://adminlte.io">Cipta Global Integral</a>.
+  </strong> All rights reserved.
+</footer>
+<div style="clear: both"></div>

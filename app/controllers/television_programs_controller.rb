@@ -14,10 +14,10 @@ class TelevisionProgramsController < ApplicationController
     @television_program.end_time =  to_seconds(television_program_params[:end_time])
     @television_program.st_video =  to_seconds(television_program_params[:st_video])
     @television_program.et_video =  to_seconds(television_program_params[:et_video])
-    @television_program.duration =  @television_program.end_time - @television_program.start_time
+    @television_program.duration =  @television_program.et_video - @television_program.st_video
     movie = FFMPEG::Movie.new(params[:television_program][:video].path)
     movie.transcode(params[:television_program][:video].path, video_codec: 'libx264')
-    binding.pry
+    # binding.pry
     if @television_program.save
       redirect_to new_television_program_path, notice: 'Program was successfully added.'
     else
@@ -45,6 +45,7 @@ class TelevisionProgramsController < ApplicationController
   def show
     respond_to do |format|
       format.js
+      format.html
     end
   end
 

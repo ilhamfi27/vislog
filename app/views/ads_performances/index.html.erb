@@ -1,299 +1,300 @@
-<div  class="hold-transition skin-blue sidebar-mini"> <!-- 1 -->
-  <div class="wrapper">
-    <div class="content-wrapper">
-      <section class="content-header">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="wadah-1 padding-all-10 box-shadow-1">
-              <h2 class="color-green text-align-left">Data Searching</h2>
-              <%= search_form_for @search, url: ads_performances_path, method: :get, class: 'row' do |f| %>
-                <div>
-                  <div class="form-group col-md-4">
-                    <label class="control-label">
-                      Category
-                    </label>
-                    <div class="">
-                      <select name="cols[]" id="dates-field2" multiple="multiple" class="multiselect-ui form-control">
-                        <option value="channel_cont">channel</option>
-                        <option value="program_cont">program</option>
-                        <option value="level_1_cont">level_1</option>
-                        <option value="level_2_cont">level_2</option>
-                        <option value="cost_eq">cost</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label>Date Range :</label>
-                    <div class="input-group">
-                      <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                      </div>
-                      <input name="date" type="text" class="form-control pull-right" id="reservation">
-                    </div>
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label>Target Audience :</label>
-                    <input type="text" name="" class="form-control">
-                  </div>
-                </div>
-                <div class="form-group col-md-12">
-                  <label>Search Keyword :</label>
-                  <input type="text" name="keyword" class="form-control">
-                </div>
-                <input type="submit" name="" value="Proceed" style="margin-right: 15px;" 
-                class="btn btn-default btn-dasar f-bg-dark-blue color-white pull-right">
-              <% end %>
-              <div style="clear: both"></div>
-            </div>
-          </div>
-        </div>
-        <div class="row" style="margin-top: 15px;">
-          <div class="col-md-12">
-            <div class="wadah-1  box-shadow-1 padding-all-10">
-              <div class="row">
-                <div class="col-md-6">
-                  <a href="" 
-                  class="btn btn-default btn-dasar f-bg-light-blue color-white">
-                    Download Selected Video
-                  </a>
-                  <a href="" style="margin-left: 10px;" 
-                  class="btn btn-default btn-dasar f-bg-yellow color-white">
-                    Export Table
-                  </a>
-                  <div class="dropdown" style="float: right; margin-right: 160px">
-                    <button type="button" 
-                    class="btn btn-default btn-dasar f-bg-grey padding-all-10 dropdown-toggle"
-                    data-toggle="dropdown">
-                      <i class="fa fa-plus"></i>
-                    </button>
-                    <ul class="dropdown-menu f-bg-red">
-                      <form method="post" action="">                    
-                        <li style="border-top: 1px solid #fff;">
-                          <a href="#">
-                            <input type="checkbox" name="">
-                          </a>
-                        </li>
-                        <li style="border-top: 1px solid #fff;">
-                          <a href="#" style="color:white;">
-                            <input type="checkbox" name="">
-                            Date
-                          </a>
-                        </li>
-                        <li style="border-top: 1px solid #fff;">
-                          <a href="#" style="color:white;">
-                            <input type="checkbox" name="">
-                            Channel
-                          </a>
-                        </li>
-                        <li style="border-top: 1px solid #fff;">
-                          <a href="#" style="color:white;">
-                            &nbsp;&nbsp;&nbsp;
-                            Program
-                          </a>
-                        </li>
-                        <li style="border-top: 1px solid #fff;">
-                          <a href="#" style="color:white;">
-                            &nbsp;&nbsp;&nbsp;
-                            Level 1
-                          </a>
-                        </li>
-                        <li style="border-top: 1px solid #fff;">
-                          <a href="#" style="color:white;">
-                            &nbsp;&nbsp;&nbsp;
-                            Level 2
-                          </a>
-                        </li>
-                        <li style="border-top: 1px solid #fff;">
-                          <a href="#" style="color:white;">
-                            &nbsp;&nbsp;&nbsp;
-                            . . .
-                          </a>
-                        </li>
-                      </form>
-                      </ul>
-                  </div>
+<% content_for :body_class, "hold-transition skin-blue sidebar-mini" %>
+
+<% content_for :navbar do %>
+  <%= render 'shared/navbar' %>
+ <% end %>
+
+<div class="content-wrapper">
+  <section class="content-header">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="wadah-1 padding-all-10 box-shadow-1">
+          <h2 class="color-green text-align-left">Data Searching</h2>
+          <%= search_form_for @search, url: ads_performances_path, method: :get, class: 'row' do |f| %>
+            <div>
+              <div class="form-group col-md-4">
+                <label class="control-label">
+                  Category
+                </label>
+                <div class="">
+                  <select name="cols[]" id="dates-field2" multiple="multiple" class="multiselect-ui form-control">
+                    <option value="channel_cont">channel</option>
+                    <option value="program_cont">program</option>
+                    <option value="level_1_cont">level_1</option>
+                    <option value="level_2_cont">level_2</option>
+                    <option value="cost_eq">cost</option>
+                  </select>
                 </div>
               </div>
-              <div class="box-body">
-                <table id="js-television-program-data-table" class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th> program </th>
-                      <th> channel </th>
-                      <th> level 1 </th>
-                      <th> level 2 </th>
-                      <th> start time </th>
-                      <th> end time </th>
-                      <th> duration </th>
-                      <th> cost </th>
-                      <th> st video </th>
-                      <th> et video </th>
-                      <th> date </th>
-                      <th> action </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <% @television_programs.each do |television_program| %>
-                      <%= link_to television_program_path(television_program.id) do %>
-                        <tr>
-                          <td> <%= television_program.program %> </td>
-                          <td> <%= television_program.channel.name %> </td>
-                          <td> <%= television_program.level_1 %> </td>
-                          <td> <%= television_program.level_2 %> </td>
-                          <td> <%= to_hours(television_program.start_time) %> </td>
-                          <td> <%= to_hours(television_program.end_time) %> </td>
-                          <td> <%= to_hours(television_program.duration) %> </td>
-                          <td> <%= television_program.cost %> </td>
-                          <td> <%= to_hours(television_program.st_video) %> </td>
-                          <td> <%= to_hours(television_program.et_video) %> </td>
-                          <td> <%= television_program.created_at %> </td>
-                          <td> <%= link_to 'preview', television_program_path(television_program.id),id: 'preview-video-link', remote: :true%> </td>
-                        </tr>
-                      <% end%>
-                    <% end %>
-                  </tbody>
-                </table>
+              <div class="form-group col-md-4">
+                <label>Date Range :</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input name="date" type="text" class="form-control pull-right" id="reservation">
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label>Target Audience :</label>
+                <input type="text" name="" class="form-control">
               </div>
             </div>
-          </div>
-        </div>
-        <div class="row" style="margin-top: 15px;">
-          <div class="col-md-12">
-            <div class="wadah-1  box-shadow-1 padding-all-10">
-              <div class="box-header with-border">
-                <h3 class="box-title">Total Spot for Each Channel</h3>
-              </div>
-              <div class="box-body">
-                <div class="chart">
-                  <canvas id="barChart" style="height:230px"></canvas>
-                </div>
-              </div>
+            <div class="form-group col-md-12">
+              <label>Search Keyword :</label>
+              <input type="text" name="keyword" class="form-control">
             </div>
-          </div>
+            <input type="submit" name="" value="Proceed" style="margin-right: 15px;" 
+            class="btn btn-default btn-dasar f-bg-dark-blue color-white pull-right">
+          <% end %>
+          <div style="clear: both"></div>
         </div>
-        <button type="button" style="margin-top: 10px;" 
-        class="btn btn-default btn-dasar f-bg-light-blue color-white"
-        data-toggle="modal" data-target="#popup">
-          Pop Up
-        </button>
-        <!-- MODAL -->
-        <div class="modal fade" id="popup" role="dialog">
-          <div class="modal-dialog">
-            <!-- MODAL CONTENT -->
-            <div class="modal-content" style="width: 800px;">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                  &times;
-                </button>
-                <a href="" 
-                class="btn btn-default btn-dasar f-bg-light-blue color-white">
-                  Download Selected Video
-                </a>
-                <a href="" style="margin-left: 10px;" 
-                class="btn btn-default btn-dasar f-bg-yellow color-white">
-                  Export Table
-                </a>
-                <div class="dropdown" style="width: 300px;float: right;margin-right: 130px">
-                  <button type="button" 
-                  class="btn btn-default btn-dasar f-bg-grey padding-all-10 dropdown-toggle"
-                  data-toggle="dropdown">
-                    <i class="fa fa-plus"></i>
-                  </button>
-                  <ul class="dropdown-menu f-bg-red">
-                    <form method="post" action="">                    
-                      <li style="border-top: 1px solid #fff;">
-                        <a href="#">
-                          <input type="checkbox" name="">
-                        </a>
-                      </li>
-                      <li style="border-top: 1px solid #fff;">
-                        <a href="#" style="color:white;">
-                          <input type="checkbox" name="">
-                          Date
-                        </a>
-                      </li>
-                      <li style="border-top: 1px solid #fff;">
-                        <a href="#" style="color:white;">
-                          <input type="checkbox" name="">
-                          Channel
-                        </a>
-                      </li>
-                      <li style="border-top: 1px solid #fff;">
-                        <a href="#" style="color:white;">
-                          &nbsp;&nbsp;&nbsp;
-                          Program
-                        </a>
-                      </li>
-                      <li style="border-top: 1px solid #fff;">
-                        <a href="#" style="color:white;">
-                          &nbsp;&nbsp;&nbsp;
-                          Level 1
-                        </a>
-                      </li>
-                      <li style="border-top: 1px solid #fff;">
-                        <a href="#" style="color:white;">
-                          &nbsp;&nbsp;&nbsp;
-                          Level 2
-                        </a>
-                      </li>
-                      <li style="border-top: 1px solid #fff;">
-                        <a href="#" style="color:white;">
-                          &nbsp;&nbsp;&nbsp;
-                          . . .
-                        </a>
-                      </li>
-                    </form>
-                    </ul>
-                </div>
-              </div>
-              <div class="modal-body">
-                <div class="box-body">
-                  <form method="post" action="" id="frm-example">
-                    <table id="example" class="table table-bordered table-striped">
-                      <thead>
-                      <tr>
-                        <th>
-                          <input name="select_all" value="1" id="example-select-all" 
-                          type="checkbox">
-                        </th>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Extn.</th>
-                        <th>Start Date</th>
-                        <th>Salary</th>
-                      </tr>
-                      </thead>
-                    </table>
-                  </form>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-    <footer class="main-footer">
-      <div class="pull-right hidden-xs">
-        <b>Version</b> 1.0
       </div>
-      <strong>
-        Copyright &copy; 2017
-        <a href="https://adminlte.io">Cipta Global Integral</a>.
-      </strong> All rights reserved.
-    </footer>
-    <div style="clear: both"></div>
+    </div>
+    <div class="row" style="margin-top: 15px;">
+      <div class="col-md-12">
+        <div class="wadah-1  box-shadow-1 padding-all-10">
+          <div class="row">
+            <div class="col-md-6">
+              <a href="" 
+              class="btn btn-default btn-dasar f-bg-light-blue color-white">
+                Download Selected Video
+              </a>
+              <a href="" style="margin-left: 10px;" 
+              class="btn btn-default btn-dasar f-bg-yellow color-white">
+                Export Table
+              </a>
+              <div class="dropdown" style="float: right; margin-right: 160px">
+                <button type="button" 
+                class="btn btn-default btn-dasar f-bg-grey padding-all-10 dropdown-toggle"
+                data-toggle="dropdown">
+                  <i class="fa fa-plus"></i>
+                </button>
+                <ul class="dropdown-menu f-bg-red">
+                  <form method="post" action="">                    
+                    <li style="border-top: 1px solid #fff;">
+                      <a href="#">
+                        <input type="checkbox" name="">
+                      </a>
+                    </li>
+                    <li style="border-top: 1px solid #fff;">
+                      <a href="#" style="color:white;">
+                        <input type="checkbox" name="">
+                        Date
+                      </a>
+                    </li>
+                    <li style="border-top: 1px solid #fff;">
+                      <a href="#" style="color:white;">
+                        <input type="checkbox" name="">
+                        Channel
+                      </a>
+                    </li>
+                    <li style="border-top: 1px solid #fff;">
+                      <a href="#" style="color:white;">
+                        &nbsp;&nbsp;&nbsp;
+                        Program
+                      </a>
+                    </li>
+                    <li style="border-top: 1px solid #fff;">
+                      <a href="#" style="color:white;">
+                        &nbsp;&nbsp;&nbsp;
+                        Level 1
+                      </a>
+                    </li>
+                    <li style="border-top: 1px solid #fff;">
+                      <a href="#" style="color:white;">
+                        &nbsp;&nbsp;&nbsp;
+                        Level 2
+                      </a>
+                    </li>
+                    <li style="border-top: 1px solid #fff;">
+                      <a href="#" style="color:white;">
+                        &nbsp;&nbsp;&nbsp;
+                        . . .
+                      </a>
+                    </li>
+                  </form>
+                  </ul>
+              </div>
+            </div>
+          </div>
+          <div class="box-body">
+            <table id="js-television-program-data-table" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th> program </th>
+                  <th> channel </th>
+                  <th> level 1 </th>
+                  <th> level 2 </th>
+                  <th> start time </th>
+                  <th> end time </th>
+                  <th> duration </th>
+                  <th> cost </th>
+                  <th> st video </th>
+                  <th> et video </th>
+                  <th> date </th>
+                  <th> action </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @television_programs.each do |television_program| %>
+                  <%= link_to television_program_path(television_program.id) do %>
+                    <tr>
+                      <td> <%= television_program.program %> </td>
+                      <td> <%= television_program.channel.name %> </td>
+                      <td> <%= television_program.level_1 %> </td>
+                      <td> <%= television_program.level_2 %> </td>
+                      <td> <%= to_hours(television_program.start_time) %> </td>
+                      <td> <%= to_hours(television_program.end_time) %> </td>
+                      <td> <%= to_hours(television_program.duration) %> </td>
+                      <td> <%= television_program.cost %> </td>
+                      <td> <%= to_hours(television_program.st_video) %> </td>
+                      <td> <%= to_hours(television_program.et_video) %> </td>
+                      <td> <%= television_program.created_at %> </td>
+                      <td> <%= link_to 'preview', television_program_path(television_program.id), id: 'preview-video-link', remote: :true %> <%= link_to 'preview no ajax', television_program_path(television_program.id), id: 'preview-video-link' %> </td>
+                    </tr>
+                  <% end%>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 15px;">
+      <div class="col-md-12">
+        <div class="wadah-1  box-shadow-1 padding-all-10">
+          <div class="box-header with-border">
+            <h3 class="box-title">Total Spot for Each Channel</h3>
+          </div>
+          <div class="box-body">
+            <div class="chart">
+              <canvas id="barChart" style="height:230px"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="button" style="margin-top: 10px;" 
+    class="btn btn-default btn-dasar f-bg-light-blue color-white"
+    data-toggle="modal" data-target="#popup">
+      Pop Up
+    </button>
+    <!-- MODAL -->
+    <div class="modal fade" id="popup" role="dialog">
+      <div class="modal-dialog">
+        <!-- MODAL CONTENT -->
+        <div class="modal-content" style="width: 800px;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+            <a href="" 
+            class="btn btn-default btn-dasar f-bg-light-blue color-white">
+              Download Selected Video
+            </a>
+            <a href="" style="margin-left: 10px;" 
+            class="btn btn-default btn-dasar f-bg-yellow color-white">
+              Export Table
+            </a>
+            <div class="dropdown" style="width: 300px;float: right;margin-right: 130px">
+              <button type="button" 
+              class="btn btn-default btn-dasar f-bg-grey padding-all-10 dropdown-toggle"
+              data-toggle="dropdown">
+                <i class="fa fa-plus"></i>
+              </button>
+              <ul class="dropdown-menu f-bg-red">
+                <form method="post" action="">                    
+                  <li style="border-top: 1px solid #fff;">
+                    <a href="#">
+                      <input type="checkbox" name="">
+                    </a>
+                  </li>
+                  <li style="border-top: 1px solid #fff;">
+                    <a href="#" style="color:white;">
+                      <input type="checkbox" name="">
+                      Date
+                    </a>
+                  </li>
+                  <li style="border-top: 1px solid #fff;">
+                    <a href="#" style="color:white;">
+                      <input type="checkbox" name="">
+                      Channel
+                    </a>
+                  </li>
+                  <li style="border-top: 1px solid #fff;">
+                    <a href="#" style="color:white;">
+                      &nbsp;&nbsp;&nbsp;
+                      Program
+                    </a>
+                  </li>
+                  <li style="border-top: 1px solid #fff;">
+                    <a href="#" style="color:white;">
+                      &nbsp;&nbsp;&nbsp;
+                      Level 1
+                    </a>
+                  </li>
+                  <li style="border-top: 1px solid #fff;">
+                    <a href="#" style="color:white;">
+                      &nbsp;&nbsp;&nbsp;
+                      Level 2
+                    </a>
+                  </li>
+                  <li style="border-top: 1px solid #fff;">
+                    <a href="#" style="color:white;">
+                      &nbsp;&nbsp;&nbsp;
+                      . . .
+                    </a>
+                  </li>
+                </form>
+                </ul>
+            </div>
+          </div>
+          <div class="modal-body">
+            <div class="box-body">
+              <form method="post" action="" id="frm-example">
+                <table id="example" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>
+                      <input name="select_all" value="1" id="example-select-all" 
+                      type="checkbox">
+                    </th>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Extn.</th>
+                    <th>Start Date</th>
+                    <th>Salary</th>
+                  </tr>
+                  </thead>
+                </table>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<footer class="main-footer">
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 1.0
   </div>
+  <strong>
+    Copyright &copy; 2017
+    <a href="https://adminlte.io">Cipta Global Integral</a>.
+  </strong> All rights reserved.
+</footer>
 <div style="clear: both"></div>
-</div> <!-- 1 -->
 <% content_for :javascript_in_file do %>
   <script type="text/javascript">
-
+    // javascript code for datepicker
     $(function(){
       $('#reservation').daterangepicker(
         {
@@ -306,8 +307,10 @@
       $('.multiselect-ui').multiselect({
           includeSelectAllOption: true
       });
+
+      // javascript code for chart
       var areaChartData = {
-        labels  : <%= @channel_names.to_json.html_safe %>,
+        labels  : <%= @channel_names.to_json.html_safe %>, // [GTV, TRANS7, TVONE, NET, ...]
             datasets: [
               {
                 label               : 'Channel',
@@ -317,7 +320,7 @@
                 pointStrokeColor    : 'rgba(60,141,188,1)',
                 pointHighlightFill  : '#fff',
                 pointHighlightStroke: 'rgba(60,141,188,1)',
-                data                : <%= @channel_ratings.to_json.html_safe %>
+                data                : <%= @channel_ratings.to_json.html_safe %> // sum of rating for every channel in array
               }
           ]
         }
@@ -357,6 +360,7 @@
 
         barChartOptions.datasetFill = false;
         barChart.Bar(barChartData, barChartOptions);
+
         var table = $('#example').DataTable({
           'ajax': 'https://api.myjson.com/bins/1us28',  
           'columnDefs': [{
