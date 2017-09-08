@@ -26,4 +26,6 @@
 
 class Viewer < ActiveRecord::Base
   belongs_to :post_buy
+  validates :market, :activity, :target, :day_part_or_variable, :tVR, :share, :"000s", :index, presence: true
+  validates :tVR, :share, :"000s", numericality: {only_integer: true}
 end

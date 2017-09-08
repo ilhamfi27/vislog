@@ -13,6 +13,7 @@ class Channel < ActiveRecord::Base
   has_many :television_programs
   has_many :post_buys, through: :television_programs
   has_many :viewers, through: :post_buys
+  validates :channel_id, :name, presence: true
 
   def self.chart_data
     joins(:viewers).select('channels.id, channels.name AS channel_name, sum(viewers."000s") AS sum_of_rating').group('television_programs.channel_id, channels.id, channels.name, viewers."000s"')

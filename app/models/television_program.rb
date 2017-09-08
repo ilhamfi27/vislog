@@ -30,7 +30,8 @@ class TelevisionProgram < ActiveRecord::Base
   belongs_to :channel
   has_one :post_buy, dependent: :destroy 
   accepts_nested_attributes_for :post_buy
-
+  validates :program, :level_1, :level_2, :cost, :channel_id, :start_time, :end_time, :duration, :st_video, :et_video, presence: true
+  validates :cost, :start_time, :end_time, :duration, :st_video, :et_video, numericality: { only_integer: true }
   mount_uploader :video, VideoUploader
 
   class << self
