@@ -7,7 +7,7 @@
 <div class="content-wrapper">
   <section class="content-header">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-6">
         <div class="box-shadow-1 padding-all-10">
           <h2 class="color-light-blue text-align-left">Data Searching</h2>
           <%= search_form_for @search, url: dashboard_path, method: :get do |f| %>
@@ -17,7 +17,7 @@
               </label>
               <div class="">
                 <select name="cols[]" id="dates-field2" multiple="multiple" class="multiselect-ui form-control">
-                  <option value="channel_cont">channel</option>
+                  <option value="channel_id_in">channel</option>
                   <option value="program_cont">program</option>
                   <option value="level_1_cont">level_1</option>
                   <option value="level_2_cont">level_2</option>

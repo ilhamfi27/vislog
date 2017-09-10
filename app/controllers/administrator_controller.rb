@@ -34,7 +34,7 @@ class AdministratorController < ApplicationController
 
   private
     def show_all_television_program_data
-      @television_programs = TelevisionProgram.all
+      @television_programs = TelevisionProgram.includes(:channel)
     end
 
     def show_all_channel_data

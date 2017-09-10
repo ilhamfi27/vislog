@@ -1,6 +1,6 @@
 class AdsPerformancesController < ApplicationController
   before_action :program_search_result, only: [:index]
-  before_action :chart_data, only: [:index]
+  before_action :data_chart, only: [:index]
 
   def index
     respond_to do |format|
@@ -27,10 +27,11 @@ class AdsPerformancesController < ApplicationController
     def program_search_result
       @search = TelevisionProgram.dashboard_search(params[:keyword], params[:cols], params[:date])
       @television_programs = @search.result
+      @for_chart_data = @search.result.chart_data
     end
 
-    def chart_data
-      @channel_names = Channel.chart_channel_names # => [GTV, TRANS7, TVONE, NET, ... ]
-      @channel_ratings = Channel.chart_sum_of_rating # sum of rating for every channel in array
+    def data_chart
+      @channel_names = @for_chart_data.chart_channel_names # => [GTV, TRANS7, TVONE, NET, ... ]
+      @channel_ratings = @for_chart_data.chart_sum_of_rating # sum of rating for every channel in array
     end
 end

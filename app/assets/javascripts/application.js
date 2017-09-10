@@ -31,7 +31,7 @@
 //= require video
 
 $(document).on('ready', function(){
-  $('#js-television-program-data-table, #js-channel-data-table').DataTable({
+  $('#js-television-program-data-table, #js-channel-data-table, #data').DataTable({
     responsive: true
   });
 });

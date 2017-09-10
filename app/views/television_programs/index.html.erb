@@ -1,0 +1,161 @@
+<% content_for :body_class, "hold-transition skin-blue sidebar-mini" %>
+
+<% content_for :admin_navbar do %>
+  <%= render 'shared/navbar_for_admin' %>
+<% end %>
+<% if @errors %>
+  <% @errors.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+<div class="content-wrapper">
+  <section class="content-header">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="wadah-1 box-shadow-1 padding-all-10">
+          <h2 class="color-green text-align-left">
+            Administrator
+            <span class="color-grey pull-right" 
+            style="font-size: 12pt;margin-top: 5px">
+              Commercial
+            </span>
+          </h2>
+          <div class="padding-all-10">
+            <div class="wadah-1">
+              <div class="row">
+              <div class="form-group col-md-4">
+                <form method="post" action="">
+                  <input type="text" name="" class="form-control">
+                </form>
+              </div>
+                <div class="form-group col-md-8">
+                  <%= form_tag import_television_programs_path, multipart: true do %>
+                    <span class="btn btn-default f-bg-dark-blue color-white">
+                      <%= file_field_tag :file %>
+                    </span>
+                    <%= submit_tag "Import", class:"btn btn-default f-bg-green color-white" %>
+                  <% end %>
+                  <a href="" data-toggle="modal" data-target="#import"
+                  class="btn btn-default f-bg-red color-white">
+                    Export
+                  </a>
+                  <a href="" 
+                  class="btn btn-default f-bg-yellow pull-right color-white">
+                    Update History
+                  </a>
+                </div>
+              </div>
+              <div class="box" style="margin-top: 10px;">
+                      <div class="box-header">
+                        <h3 class="box-title">Data Table</h3>
+                      </div>
+                      <!-- /.box-header -->
+                      <div class="box-body">
+                        <div class="table-responsive">
+                          <table id="data" class="table table-bordered table-striped">
+                            <thead>
+                              <tr>
+                                <th>
+                                  program
+                                </th>
+                                <th>
+                                  channel
+                                </th>
+                                <th>
+                                  level 1
+                                </th>
+                                <th>
+                                  level 2
+                                </th>
+                                <th>
+                                  start time
+                                </th>
+                                <th>
+                                  end time
+                                </th>
+                                <th>
+                                  duration
+                                </th>
+                                <th>
+                                  cost
+                                </th>
+                                <th>
+                                  st video
+                                </th>
+                                <th>
+                                  et video
+                                </th>
+                                <th>
+                                  date
+                                </th>
+                                <th>
+                                  action
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <% @television_programs.each do |television_program| %>
+                                <tr>
+                                  <td>
+                                    <%= television_program.program %>
+                                  </td>
+                                  <td>
+                                    <%= television_program.channel.name %>
+                                  </td>
+                                  <td>
+                                    <%= television_program.level_1 %>
+                                  </td>
+                                  <td>
+                                    <%= television_program.level_2 %>
+                                  </td>
+                                  <td>
+                                    <%= to_hours(television_program.start_time) %>
+                                  </td>
+                                  <td>
+                                    <%= to_hours(television_program.end_time) %>
+                                  </td>
+                                  <td>
+                                    <%= to_hours(television_program.duration) %>
+                                  </td>
+                                  <td>
+                                    <%= television_program.cost %>
+                                  </td>
+                                  <td>
+                                    <%= to_hours(television_program.st_video) %>
+                                  </td>
+                                  <td>
+                                    <%= to_hours(television_program.et_video) %>
+                                  </td>
+                                  <td>
+                                    <%= television_program.created_at %>
+                                  </td>
+                                  <td>
+                                    <%= link_to "show", television_program_path(television_program.id), id: 'preview-video-link', remote: :true %>
+                                    <%= link_to "update", edit_television_program_path(television_program.id) %>
+                                    <%= link_to "delete", television_program_path(television_program.id), method: :delete, data: {confirm: "Are you sure ?"} %>
+                                  </td>
+                                </tr>
+                              <% end %>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <!-- /.box-body -->
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<footer class="main-footer">
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 1.0
+  </div>
+  <strong>
+    Copyright &copy; 2017
+    <a href="https://adminlte.io">Cipta Global Integral</a>.
+  </strong> All rights reserved.
+</footer>
+<div style="clear: both"></div>

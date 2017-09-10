@@ -90,7 +90,11 @@ Rails.application.routes.draw do
 
   resources :user_activities, only: [:index]
   resources :channels
-  resources :television_programs
+  resources :television_programs do
+    collection do
+      post :import
+    end
+  end
   resources :ads_performances
   resources :post_buys
   resources :viewers

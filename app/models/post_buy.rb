@@ -32,6 +32,6 @@ class PostBuy < ActiveRecord::Base
   has_one :viewer, dependent: :destroy 
   accepts_nested_attributes_for :viewer
 
-validates :sector, :category, :advertiser, :product, :copy, :break_no, :pos_in_break, :break, :spot_type, :size, :t_second_cost, :presence: true
-validates :break_no, :pos_in_break, :break, :t_second_cost, numericality: {only_integer: true}
+# validates :sector, :category, :advertiser, :product, :copy, :break_no, :pos_in_break, :break, :spot_type, :size, :t_second_cost, presence: true
+# validates :break_no, :pos_in_break, :break, :t_second_cost, numericality: {only_integer: true}
 end

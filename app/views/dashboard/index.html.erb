@@ -10,37 +10,24 @@
       <div class="col-md-6">
         <div class="wadah-1 padding-all-10 box-shadow-1">
           <h2 class="color-light-blue text-align-left">Data Searching</h2>
-          <form method="post" action="">
+          <%= search_form_for @search, url: dashboard_path, method: :get do |f| %>
             <div class="form-group">
                 <label class="control-label">
                   Category
                 </label>
                 <div class="">
-                    <select name="" class="form-control"
-                    style="margin-bottom: 10px">
-                  <option value="">--Choose--</option>
-                  <option value="">All Category</option>
-                  <option value="">Advertiser</option>
-                  <option value="">Category</option>
-                  <option value="">Channel</option>
-                  <option value="">Copy</option>
-                  <option value="">Level 1</option>
-                  <option value="">Level 2</option>
-                  <option value="">Product</option>
-                  <option value="">Program</option>
-                  <option value="">Sector</option>
-                  <option value="">Spot Type</option>
-                </select>
-                    <select id="dates-field2" multiple="multiple"
-                    class="multiselect-ui form-control">
-                        <option value="cheese">Cheese</option>
-                        <option value="tomatoes">Tomatoes</option>
-                        <option value="mozarella">Mozzarella</option>
-                        <option value="mushrooms">Mushrooms</option>
-                        <option value="pepperoni">Pepperoni</option>
-                        <option value="onions">Onions</option>
-                    </select>
+                  <select name="cols[]" id="dates-field2" multiple="multiple" class="multiselect-ui form-control">
+                    <option value="channel_id_in">channel</option>
+                    <option value="program_cont">program</option>
+                    <option value="level_1_cont">level_1</option>
+                    <option value="level_2_cont">level_2</option>
+                    <option value="cost_eq">cost</option>
+                  </select>
                 </div>
+            </div>
+            <div class="form-group">
+              <label>Search Keyword :</label>
+              <input type="text" name="keyword" class="form-control">
             </div>
             <div class="form-group">
               <label>Date Range :</label>
@@ -48,13 +35,12 @@
                 <div class="input-group-addon">
                   <i class="fa fa-calendar"></i>
                 </div>
-                <input type="text" class="form-control pull-right" 
-                id="reservation">
+                <input type="text" name="date" class="form-control pull-right" id="reservation">
               </div>
             </div>
             <input type="submit" name="" value="Proceed" 
             class="btn btn-default btn-dasar f-bg-green color-white">
-          </form>
+          <% end %>
           <div style="clear: both"></div>
         </div>
       </div>
@@ -100,7 +86,7 @@
           <center>
             <%= image_tag 'icon/1-dark-blue.png', style: 'height: 70px;margin-top: 10px' %>
           </center>
-          <h2 class="text-align-center">11,862</h2>
+          <h2 class="text-align-center"><%= @no_of_spot_total %></h2>
           <h4 class="text-align-center">No of Spot</h4>
           <a href="" class="f-bg-dark-blue btn btn-default btn-dasar btn-full">
             More Info &nbsp; <i class="fa fa-chevron-circle-right"></i>
@@ -112,7 +98,7 @@
           <center>
             <%= image_tag 'icon/2-green.png', style: 'height: 70px;margin-top: 10px' %>
           </center>
-          <h2 class="text-align-center">67, 891</h2>
+          <h2 class="text-align-center"><%= @cost_total %></h2>
           <h4 class="text-align-center">Cost (IDR Billions)</h4>
           <a href="" class="f-bg-green btn btn-default btn-dasar btn-full">
             More Info &nbsp; <i class="fa fa-chevron-circle-right"></i>
@@ -298,7 +284,7 @@
         });
         
       var areaChartData = {
-        labels  : ['TRANS7', 'RCTI', 'SCTV', 'TRANS TV', 'GTV', 'TVM', 'MNC TV', 'ANTV'],
+        labels  : <%= @channel_names.to_json.html_safe %>, // [GTV, TRANS7, TVONE, NET, ...],
             datasets: [
               {
                 label               : 'Channel',
@@ -308,7 +294,7 @@
                 pointStrokeColor    : 'rgba(60,141,188,1)',
                 pointHighlightFill  : '#fff',
                 pointHighlightStroke: 'rgba(60,141,188,1)',
-                data                : [1200, 1700, 1500, 1300, 1100, 1400, 1300, 1000]
+                data                : <%= @channel_ratings.to_json.html_safe %> // sum of rating for every channel in array
               }
           ]
         }

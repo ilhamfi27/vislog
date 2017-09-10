@@ -47,11 +47,11 @@ class ApplicationController < ActionController::Base
   end
 
   def to_seconds(time)
-    Time.parse(time).seconds_since_midnight.to_i
+    time.split(':').map { |a| a.to_i }.inject(0) { |a, b| a * 60 + b}
   end
 
   def to_hours(seconds)
-    Time.at(seconds).utc.strftime("%H:%M:%S")
+    [seconds / 3600, seconds / 60 % 60, seconds % 60].map { |t| t.to_s.rjust(2,'0') }.join(':')
   end
 
   protected

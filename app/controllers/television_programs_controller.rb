@@ -1,6 +1,11 @@
 class TelevisionProgramsController < ApplicationController
   before_action :set_channel_collection, only: [:new, :edit]
   before_action :set_television_program, only: [:show, :edit, :update, :destroy]
+  before_action :show_all_television_program_data, only: [:index]
+
+  def index
+    
+  end
 
   def new
     @television_program = TelevisionProgram.new
@@ -49,10 +54,25 @@ class TelevisionProgramsController < ApplicationController
     end
   end
 
+  def import
+    if TelevisionProgram.import(params[:file]) 
+      redirect_to television_programs_path, notice: "Products imported."
+    else
+      redirect_to television_programs_path, notice: "Products fail to imported."
+      @errors = TelevisionProgram.import_errors
+      binding.pry
+    end
+  end
+  
+
 
   private
     def set_television_program
       @television_program = TelevisionProgram.find(params[:id])
+    end
+    
+    def show_all_television_program_data
+      @television_programs = TelevisionProgram.includes(:channel)
     end
 
     def set_channel_collection

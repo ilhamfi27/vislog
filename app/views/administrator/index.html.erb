@@ -52,8 +52,8 @@
                 </th>
               </tr>
             </thead>
-            <% @television_programs.each do |television_program| %>
-              <tbody>
+            <tbody>
+              <% @television_programs.each do |television_program| %>
                 <tr>
                   <td>
                     <%= television_program.program %>
@@ -94,8 +94,8 @@
                     <%= link_to "delete", television_program_path(television_program.id), method: :delete, data: {confirm: "Are you sure ?"} %>
                   </td>
                 </tr>
-              </tbody>
               <% end %>
+            </tbody>
           </table>
         </div>
         <br>

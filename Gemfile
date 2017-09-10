@@ -43,6 +43,8 @@ gem 'streamio-ffmpeg'
 # export to excel gem
 gem 'axlsx'
 gem "axlsx_rails" 
+# import file from excel gem
+gem 'roo'
 # database annotation
 gem 'annotate'
 # Use ActiveModel has_secure_password

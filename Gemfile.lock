@@ -180,6 +180,11 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    roo (1.13.2)
+      nokogiri
+      rubyzip
+      spreadsheet (> 0.6.4)
+    ruby-ole (1.2.12.1)
     rubyzip (1.0.0)
     sass (3.4.23)
     sass-rails (5.0.6)
@@ -192,6 +197,8 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     slop (3.6.0)
+    spreadsheet (1.1.4)
+      ruby-ole (>= 1.0)
     spring (2.0.1)
       activesupport (>= 4.2)
     sprockets (3.7.1)
@@ -252,6 +259,7 @@ DEPENDENCIES
   rails (= 4.2.7)
   rails_12factor
   ransack
+  roo
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
