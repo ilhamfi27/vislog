@@ -44,7 +44,7 @@ class TelevisionProgramsController < ApplicationController
 
   def destroy
     @television_program.destroy
-    redirect_to administrator_path, notice: 'television_program was successfully destroyed.'
+    redirect_to administrators_path, notice: 'television_program was successfully destroyed.'
   end
   
   def show

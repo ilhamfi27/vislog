@@ -35,7 +35,7 @@ class PostBuysController < ApplicationController
 
   def destroy
     @post_buy.destroy
-    redirect_to administrator_path, notice: 'post_buy was successfully destroyed.'
+    redirect_to administrators_path, notice: 'post_buy was successfully destroyed.'
   end
 
 

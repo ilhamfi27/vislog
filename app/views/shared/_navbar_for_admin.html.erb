@@ -1,5 +1,5 @@
 <header class="main-header header-wrapper">
-  <%= link_to administrator_path, class: 'logo' do %>
+  <%= link_to administrators_path, class: 'logo' do %>
     <span class="logo-mini">
       <%= image_tag 'icon/monitor.png', style: 'height: 30px' %>
     </span>
@@ -19,7 +19,7 @@
             <i class="fa fa-th-large fa-2x"></i>
           </a>
                 <ul class="dropdown-menu row box-shadow-1" style="width: 300px">
-                  <%= link_to dashboard_path do %>
+                  <%= link_to dashboards_path do %>
                     <li class="col-xs-4">
                       <center>
                         <i class="fa fa-dashboard color-light-blue"></i>
@@ -130,7 +130,7 @@
                     </li>
                   </a>
                   <% if current_user.admin? %>
-                    <%= link_to administrator_path do %>
+                    <%= link_to administrators_path do %>
                       <li class="col-xs-4">
                         <center>
                           <i class="fa fa-gear color-light-blue"></i>

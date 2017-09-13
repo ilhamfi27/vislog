@@ -3,7 +3,16 @@
     <div class="content-wrapper">
       <section class="content-header">
         <%#= videojs_rails sources: { mp4: @television_program.video.url }, setup: "{}", controls: true, width:"400" %>
-        <%= video_tag @television_program.video.url, id: 'js-video-player', class: 'video-js', width: '680', height: '480' %>
+        <%#= video_tag [@television_program.video.url], id: 'js-video-player', class: 'video-js', width: '680', height: '480', data: {setup: {}}, controls: true, preload: "auto" %>
+        <!-- <video id="js-video-player" class="video-js" controls preload="auto" width="640" height="264" data-setup="{}">
+          <source src="<%#= @television_program.video.url %>" type='video/mp4'>
+          <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+          </p>
+        </video> -->
+        <video controls preload="auto" width="640" height="264">
+          <source src="<%= @television_program.video.url %>" type='video/mp4'>
+        </video>
       </section>
     </div>
   </div>
@@ -11,14 +20,6 @@
 
 <% content_for :javascript_in_file do %>
   <script type="text/javascript">
-    try{
-      videojs('js-video-player', {
-        controls: true,
-        autoplay: false,
-        preload: 'auto'
-      });
-    } catch (e) {
-      console.log(e);
-    }
+    // videojs('js-video-player');
   </script>
 <% end %>

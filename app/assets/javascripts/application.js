@@ -29,9 +29,14 @@
 //= require adminlte/demo
 //= require multiselect.min
 //= require video
+//= require videojs-flash
+//= require videojs-contrib-hls
 
 $(document).on('ready', function(){
   $('#js-television-program-data-table, #js-channel-data-table, #data').DataTable({
     responsive: true
   });
+  $(".alert").fadeTo(2000, 500).fadeOut(1000, function(){
+    $(".alert").fadeOut(1000);
+  });  
 });

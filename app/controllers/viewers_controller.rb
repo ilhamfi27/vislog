@@ -30,7 +30,7 @@ class ViewersController < ApplicationController
 
   def destroy
     @viewer.destroy
-    redirect_to administrator_path, notice: 'viewer was successfully destroyed.'
+    redirect_to administrators_path, notice: 'viewer was successfully destroyed.'
   end
 
 

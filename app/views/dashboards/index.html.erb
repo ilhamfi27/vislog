@@ -10,7 +10,7 @@
       <div class="col-md-6">
         <div class="wadah-1 padding-all-10 box-shadow-1">
           <h2 class="color-light-blue text-align-left">Data Searching</h2>
-          <%= search_form_for @search, url: dashboard_path, method: :get do |f| %>
+          <%= search_form_for @search, url: dashboards_path, method: :get do |f| %>
             <div class="form-group">
                 <label class="control-label">
                   Category
@@ -68,14 +68,12 @@
             class="btn btn-default btn-dasar f-bg-dark-blue color-white">
               Calculate
             </a>
-            <a href="" style="margin-right: 10px"
-            class="btn btn-default btn-dasar f-bg-yellow color-white">
+            <%= link_to export_chart_dashboards_path(format: "pdf"), class: 'btn btn-default btn-dasar f-bg-yellow color-white' do %>
               Export Chart
-            </a>
-            <a href="" 
-            class="btn btn-default btn-dasar f-bg-red color-white">
+            <% end %>
+            <%= link_to export_data_dashboards_path(format: "xlsx"), class: 'btn btn-default btn-dasar f-bg-red color-white' do %>
               Export Table
-            </a>
+            <% end %>
           </form>
         </div>
       </div>

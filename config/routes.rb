@@ -78,16 +78,19 @@
 # 
 
 Rails.application.routes.draw do
-  get 'administrator', to: 'administrator#index' 
-  get 'home/', to: 'dashboard#home' 
-  get 'dashboard/', to: 'dashboard#index' 
+  get 'home/', to: 'dashboards#home' 
   devise_for :users, controllers: { 
     sessions: 'users/sessions', 
     registrations: 'users/registrations', 
     invitations: 'users/invitations'
   }
   root 'welcome#index'
-
+  resources :dashboards, only: [:index] do
+    collection do
+      get :export_data
+      get :export_chart
+    end
+  end
   resources :user_activities, only: [:index]
   resources :channels
   resources :television_programs do
@@ -95,10 +98,14 @@ Rails.application.routes.draw do
       post :import
     end
   end
-  resources :ads_performances
+  resources :ads_performances, only: [:index] do
+    collection do
+      get :export_data
+    end
+  end
   resources :post_buys
   resources :viewers
-  resources :administrator, except: [:show] do
+  resources :administrators, only: [:index] do
     collection do
       get :export_tables
     end

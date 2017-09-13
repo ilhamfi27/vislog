@@ -5,7 +5,6 @@ class AdsPerformancesController < ApplicationController
   def index
     respond_to do |format|
       format.html
-      format.json { render :json => program_search_result }
     end
   end
 
@@ -19,8 +18,9 @@ class AdsPerformancesController < ApplicationController
     end
 
     respond_to do |format| 
-       format.xlsx {render xlsx: 'export_data',filename: "tables.xlsx"}
+      format.xlsx { render xlsx: 'export_data', filename: "vislog-export-tables.xlsx" }
     end
+    record_activity("Export table")
   end
 
   private

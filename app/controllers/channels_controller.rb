@@ -13,6 +13,7 @@ class ChannelsController < ApplicationController
     @channel = Channel.new(channel_params)
     if @channel.save
       redirect_to new_channel_path, notice: 'Channel was successfully added.'
+      record_activity("Create channel")
     else
       render :new
     end
@@ -32,7 +33,7 @@ class ChannelsController < ApplicationController
 
   def destroy
     @channel.destroy
-    redirect_to administrator_path, notice: 'channel was successfully destroyed.'
+    redirect_to administrators_path, notice: 'channel was successfully destroyed.'
   end
 
 

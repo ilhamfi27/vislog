@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <%= wicked_pdf_stylesheet_link_tag "pdf" -%>
+    <%= wicked_pdf_javascript_include_tag "application", "adminlte/Chart" %>
+  </head>
+  <body>
+    <div id="content">
+      <%= yield %>
+    </div>
+  <%= yield :javascript_in_file %>
+  </body>
+</html>

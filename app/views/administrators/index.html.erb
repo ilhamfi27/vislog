@@ -115,8 +115,8 @@
                 </th>
               </tr>
             </thead>
-            <% @channels.each do |channel| %>
-              <tbody>
+            <tbody>
+              <% @channels.each do |channel| %>
                 <tr>
                   <td>
                     <%= channel.channel_id %>
@@ -129,8 +129,8 @@
                     <%= link_to "delete", channel_path(channel.id), method: :delete, data: {confirm: "Are you sure ?"} %>
                   </td>
                 </tr>
-              </tbody>
               <% end %>
+            </tbody>
           </table>
         </div>
       </div>

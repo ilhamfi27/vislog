@@ -47,6 +47,9 @@ gem "axlsx_rails"
 gem 'roo'
 # database annotation
 gem 'annotate'
+# HTML to PDF converter
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary-edge'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

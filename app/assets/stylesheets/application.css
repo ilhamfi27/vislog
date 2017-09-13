@@ -21,3 +21,22 @@
 @import url('https://fonts.googleapis.com/css?family=Muli:300,400,800');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 /*----------------------*/
+
+/*  Code for fixed alert  */
+.fixed-alert{
+  /* fixed position a zero-height full width container */
+  position: fixed;
+  top: 40px;
+  left: 5%;
+  right: 5%;
+  width: 90%;
+  /* center all inline content */
+  text-align: center;
+}
+.fixed-alert > .text {
+  /* make the block inline */
+  display: inline-block;
+  /* reset container's center alignment */
+  text-align: center;
+}
+/*------------------------*/

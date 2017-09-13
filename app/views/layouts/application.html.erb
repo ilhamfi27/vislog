@@ -11,12 +11,16 @@
 </head>
 <body class="<%= yield (:body_class) %>">
 <% if alert %>
-  <p class="alert"><%= alert %></p>
+  <div class="alert alert-danger alert-dismissible fixed-alert" role="alert">
+    <div class="text">
+      <strong>Warning!</strong><br><%= alert %>
+    </div>
+  </div>
 <% end %>
 
-<% if notice %>
-  <p class="notice"><%= notice %></p>
-<% end %>
+<%# if notice %>
+  <!-- <p class="notice"><%#= notice %></p> -->
+<%# end %>
 
 <div class="wrapper">
   <% if user_signed_in? %>
