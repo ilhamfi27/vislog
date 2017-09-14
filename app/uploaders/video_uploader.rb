@@ -6,7 +6,14 @@ class VideoUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  if Rails.env == "development"
+    include CarrierWave::MiniMagick
+  else
+    include Cloudinary::CarrierWave
+  end
+
+  # Choose what kind of storage to use for this uploader:
+  storage :file if Rails.env == "development"
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
