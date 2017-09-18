@@ -20,9 +20,6 @@ class TelevisionProgramsController < ApplicationController
     @television_program.st_video =  to_seconds(television_program_params[:st_video])
     @television_program.et_video =  to_seconds(television_program_params[:et_video])
     @television_program.duration =  @television_program.et_video - @television_program.st_video
-    movie = FFMPEG::Movie.new(params[:television_program][:video].path)
-    movie.transcode(params[:television_program][:video].path, video_codec: 'libx264')
-    # binding.pry
     if @television_program.save
       redirect_to new_television_program_path, notice: 'Program was successfully added.'
     else
@@ -55,12 +52,13 @@ class TelevisionProgramsController < ApplicationController
   end
 
   def import
-    if TelevisionProgram.import(params[:file]) 
-      redirect_to television_programs_path, notice: "Products imported."
+    @importer = TelevisionProgramSpreadsheetImporter.new(params[:file]) 
+    @importer.import!
+
+    if @importer.is_valid
+      render :import
     else
-      redirect_to television_programs_path, notice: "Products fail to imported."
-      @errors = TelevisionProgram.import_errors
-      binding.pry
+      render :import_error
     end
   end
   

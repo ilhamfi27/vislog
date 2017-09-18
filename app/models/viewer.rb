@@ -10,7 +10,7 @@
 #  tVR                  :float
 #  share                :float
 #  000s                 :integer
-#  index                :date
+#  index                :string
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  post_buy_id          :integer

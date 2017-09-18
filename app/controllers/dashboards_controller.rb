@@ -31,6 +31,7 @@ class DashboardsController < ApplicationController
       format.html
       format.pdf do
         render pdf: "report",
+               viewport_size: '1280x1024',
                layout: 'pdf.html.erb',
                locals: { data: chart_data },
                show_as_html: params[:as_html]
@@ -40,13 +41,13 @@ class DashboardsController < ApplicationController
 
   private
     def set_program_search
-      @search ||= TelevisionProgram.dashboard_search(params[:keyword], params[:cols], params[:date])
+      @search = TelevisionProgram.dashboard_search(params[:keyword], params[:cols], params[:date])
     end
 
     def program_search_result
       set_program_search
       @television_programs = @search.result
-      @for_no_of_spot = @search.result.select('sum(viewers."000s") AS sum_no_of_spot').group('television_programs.channel_id, viewers."000s"')
+      @for_no_of_spot = @search.result.select('sum(viewers."000s") AS sum_no_of_spot, channels.id').group('channels.id, viewers."000s"')
       @for_cost = @search.result.select('sum(television_programs.cost) AS cost').group('television_programs.channel_id, television_programs.cost')
     end
 

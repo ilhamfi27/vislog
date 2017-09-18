@@ -2,16 +2,12 @@
   <div class="wrapper">
     <div class="content-wrapper">
       <section class="content-header">
-        <%#= videojs_rails sources: { mp4: @television_program.video.url }, setup: "{}", controls: true, width:"400" %>
-        <%#= video_tag [@television_program.video.url], id: 'js-video-player', class: 'video-js', width: '680', height: '480', data: {setup: {}}, controls: true, preload: "auto" %>
-        <!-- <video id="js-video-player" class="video-js" controls preload="auto" width="640" height="264" data-setup="{}">
-          <source src="<%#= @television_program.video.url %>" type='video/mp4'>
+        <video id="js-video-player" class="video-js" controls preload="auto" width="640" height="264" data-setup="{}">
+          <source src="<%= @television_program.video.url(:mp4) %>" type='video/mp4'>
+          <!-- <source src="<%#= @television_program.video.url(:webm) %>" type='video/webm'> -->
           <p class="vjs-no-js">
             To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
           </p>
-        </video> -->
-        <video controls preload="auto" width="640" height="264">
-          <source src="<%= @television_program.video.url %>" type='video/mp4'>
         </video>
       </section>
     </div>
@@ -20,6 +16,13 @@
 
 <% content_for :javascript_in_file do %>
   <script type="text/javascript">
-    // videojs('js-video-player');
+    videojs('js-video-player');
+    var video = videojs('js-video-player');
+    video.currentTime(video.currentTime() + 5);
+    video.on('timeupdate', function(e) {
+    if (video.currentTime() >= 15) {
+        video.pause();
+      }
+    });
   </script>
 <% end %>

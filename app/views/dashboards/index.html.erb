@@ -68,7 +68,7 @@
             class="btn btn-default btn-dasar f-bg-dark-blue color-white">
               Calculate
             </a>
-            <%= link_to export_chart_dashboards_path(format: "pdf"), class: 'btn btn-default btn-dasar f-bg-yellow color-white' do %>
+            <%= link_to export_chart_dashboards_path(format: "pdf", keyword: params[:keyword], cols: params[:cols], date: params[:date]), class: 'btn btn-default btn-dasar f-bg-yellow color-white' do %>
               Export Chart
             <% end %>
             <%= link_to export_data_dashboards_path(format: "xlsx"), class: 'btn btn-default btn-dasar f-bg-red color-white' do %>
