@@ -50,6 +50,8 @@ gem 'annotate'
 # HTML to PDF converter
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary-edge'
+# bulk insert to database
+gem 'activerecord-import'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
