@@ -1,7 +1,9 @@
+<h2>Total Spot for Each Channel</h2>
+<br>
 <div class="chart">
-  <canvas id="barChart" style="height:230px"></canvas>
+  <canvas id="barChart" style="height:400px; width: 800px"></canvas>
 </div>
-<% content_for :javascript_in_file do %>
+<%= content_for :javascript_in_file do %>
   <script type="text/javascript">
     $(function(){
       var areaChartData = {
@@ -26,6 +28,7 @@
       barChartData.datasets[0].strokeColor = '#4A89DC';
       barChartData.datasets[0].pointColor  = '#4A89DC';
       var barChartOptions                  = {
+        animation: false,
         //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
         scaleBeginAtZero        : true,
         //Boolean - Whether grid lines are shown across the chart
@@ -48,6 +51,8 @@
         barDatasetSpacing       : 1,
         maintainAspectRatio     : true
       };
+      barChartOptions.datasetFill = false;
+      barChart.Bar(barChartData, barChartOptions);
     });
   </script>
 <% end %>
