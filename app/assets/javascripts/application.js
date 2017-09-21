@@ -31,7 +31,6 @@
 //= require video
 //= require videojs-flash
 //= require videojs-contrib-hls
-//= require flowplayer
 
 $(document).on('ready', function(){
   $('#js-television-program-data-table, #js-channel-data-table, #data').DataTable({

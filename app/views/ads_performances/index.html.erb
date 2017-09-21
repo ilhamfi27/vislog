@@ -360,26 +360,9 @@
         barChartOptions.datasetFill = false;
         barChart.Bar(barChartData, barChartOptions);
 
-        var table = $('#example').DataTable({
-          'ajax': 'https://api.myjson.com/bins/1us28',  
-          'columnDefs': [{
-             'targets': 0,
-             'searchable':false,
-             'orderable':false,
-             'className': 'dt-body-center',
-             'render': function (data, type, full, meta){
-                 return '<input type="checkbox" name="id[]" value="' 
-                    + $('<div/>').text(data).html() + '">';
-             }
-          }],
-          'order': [1, 'asc'],
-          'paging'      : true,
-          'lengthChange': false,
-          'searching'   : true,
-          'ordering'    : true,
-          'info'        : true,
-          'autoWidth'   : false
-       });
+        $("#css-video-modal").modal('show', function(){
+          console.log("asd");
+        });
     });
   </script>
 <% end %>

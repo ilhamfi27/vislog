@@ -26,7 +26,7 @@ class AdsPerformancesController < ApplicationController
   private
     def program_search_result
       @search = TelevisionProgram.dashboard_search(params[:keyword], params[:cols], params[:date])
-      @television_programs = @search.result
+      @television_programs = @search.result.includes(:channel)
       @for_chart_data = @search.result.chart_data
     end
 
