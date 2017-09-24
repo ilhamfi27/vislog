@@ -70,46 +70,71 @@
                   <i class="fa fa-plus"></i>
                 </button>
                 <ul class="dropdown-menu f-bg-red">
-                  <form method="post" action="">                    
+                  <form id="">
                     <li style="border-top: 1px solid #fff;">
-                      <a href="#">
-                        <input type="checkbox" name="">
-                      </a>
-                    </li>
-                    <li style="border-top: 1px solid #fff;">
-                      <a href="#" style="color:white;">
-                        <input type="checkbox" name="">
+                      <a href="javascript:void(0);" style="color:white;">
+                        <input type="checkbox" name="" class="js-table-checkbox" data-column="0" value="">
                         Date
                       </a>
                     </li>
                     <li style="border-top: 1px solid #fff;">
-                      <a href="#" style="color:white;">
-                        <input type="checkbox" name="">
-                        Channel
-                      </a>
-                    </li>
-                    <li style="border-top: 1px solid #fff;">
-                      <a href="#" style="color:white;">
-                        &nbsp;&nbsp;&nbsp;
+                      <a href="javascript:void(0);" style="color:white;">
+                        <input type="checkbox" name="" class="js-table-checkbox" data-column="1" value="">
                         Program
                       </a>
                     </li>
                     <li style="border-top: 1px solid #fff;">
-                      <a href="#" style="color:white;">
-                        &nbsp;&nbsp;&nbsp;
+                      <a href="javascript:void(0);" style="color:white;">
+                        <input type="checkbox" name="" class="js-table-checkbox" data-column="2" value="">
+                        Channel
+                      </a>
+                    </li>
+                    <li style="border-top: 1px solid #fff;">
+                      <a href="javascript:void(0);" style="color:white;">
+                        <input type="checkbox" name="" class="js-table-checkbox" data-column="3" value="">
                         Level 1
                       </a>
                     </li>
                     <li style="border-top: 1px solid #fff;">
-                      <a href="#" style="color:white;">
-                        &nbsp;&nbsp;&nbsp;
+                      <a href="javascript:void(0);" style="color:white;">
+                        <input type="checkbox" name="" class="js-table-checkbox" data-column="4" value="">
                         Level 2
                       </a>
                     </li>
                     <li style="border-top: 1px solid #fff;">
-                      <a href="#" style="color:white;">
-                        &nbsp;&nbsp;&nbsp;
-                        . . .
+                      <a href="javascript:void(0);" style="color:white;">
+                        <input type="checkbox" name="" class="js-table-checkbox" data-column="5" value="">
+                        Start Time
+                      </a>
+                    </li>
+                    <li style="border-top: 1px solid #fff;">
+                      <a href="javascript:void(0);" style="color:white;">
+                        <input type="checkbox" name="" class="js-table-checkbox" data-column="6" value="">
+                        End Time
+                      </a>
+                    </li>
+                    <li style="border-top: 1px solid #fff;">
+                      <a href="javascript:void(0);" style="color:white;">
+                        <input type="checkbox" name="" class="js-table-checkbox" data-column="7" value="">
+                        Duration
+                      </a>
+                    </li>
+                    <li style="border-top: 1px solid #fff;">
+                      <a href="javascript:void(0);" style="color:white;">
+                        <input type="checkbox" name="" class="js-table-checkbox" data-column="8" value="">
+                        Cost
+                      </a>
+                    </li>
+                    <li style="border-top: 1px solid #fff;">
+                      <a href="javascript:void(0);" style="color:white;">
+                        <input type="checkbox" name="" class="js-table-checkbox" data-column="9" value="">
+                        ST Video
+                      </a>
+                    </li>
+                    <li style="border-top: 1px solid #fff;">
+                      <a href="javascript:void(0);" style="color:white;">
+                        <input type="checkbox" name="" class="js-table-checkbox" data-column="10" value="">
+                        ET Video
                       </a>
                     </li>
                   </form>
@@ -121,35 +146,35 @@
             <table id="js-television-program-data-table" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th> program </th>
-                  <th> channel </th>
-                  <th> level 1 </th>
-                  <th> level 2 </th>
-                  <th> start time </th>
-                  <th> end time </th>
-                  <th> duration </th>
-                  <th> cost </th>
-                  <th> st video </th>
-                  <th> et video </th>
-                  <th> date </th>
-                  <th> action </th>
+                  <th class="th-date-table data-table"> Date </th>
+                  <th class="th-program-table data-table"> Program </th>
+                  <th class="th-channel-table data-table"> Channel </th>
+                  <th class="th-level_1-table data-table"> Level 1 </th>
+                  <th class="th-level_2-table data-table"> Level 2 </th>
+                  <th class="th-start_time-table data-table"> Start Time </th>
+                  <th class="th-end_time-table data-table"> End Time </th>
+                  <th class="th-duration-table data-table"> Duration </th>
+                  <th class="th-cost-table data-table"> Cost </th>
+                  <th class="th-st_video-table data-table"> ST Video </th>
+                  <th class="th-et_video-table data-table"> ET Video </th>
+                  <th> Action </th>
                 </tr>
               </thead>
               <tbody>
                 <% @television_programs.each do |television_program| %>
                   <%= link_to television_program_path(television_program.id) do %>
                     <tr>
-                      <td> <%= television_program.program %> </td>
-                      <td> <%= television_program.channel.name %> </td>
-                      <td> <%= television_program.level_1 %> </td>
-                      <td> <%= television_program.level_2 %> </td>
-                      <td> <%= to_hours(television_program.start_time) %> </td>
-                      <td> <%= to_hours(television_program.end_time) %> </td>
-                      <td> <%= to_hours(television_program.duration) %> </td>
-                      <td> <%= television_program.cost %> </td>
-                      <td> <%= to_hours(television_program.st_video) %> </td>
-                      <td> <%= to_hours(television_program.et_video) %> </td>
-                      <td> <%= television_program.created_at %> </td>
+                      <td class="td-date-table data-table"> <%= television_program.created_at %> </td>
+                      <td class="td-program-table data-table"> <%= television_program.program %> </td>
+                      <td class="td-channel-table data-table"> <%= television_program.channel.name %> </td>
+                      <td class="td-level_1-table data-table"> <%= television_program.level_1 %> </td>
+                      <td class="td-level_2-table data-table"> <%= television_program.level_2 %> </td>
+                      <td class="td-start_time-table data-table"> <%= to_hours(television_program.start_time) %> </td>
+                      <td class="td-end_time-table data-table"> <%= to_hours(television_program.end_time) %> </td>
+                      <td class="td-duration-table data-table"> <%= to_hours(television_program.duration) %> </td>
+                      <td class="td-cost-table data-table"> <%= television_program.cost %> </td>
+                      <td class="td-st_video-table data-table"> <%= to_hours(television_program.st_video) %> </td>
+                      <td class="td-et_video-table data-table"> <%= to_hours(television_program.et_video) %> </td>
                       <td> <%= link_to 'preview', television_program_path(television_program.id), id: 'preview-video-link', remote: :true %> <%= link_to 'preview no ajax', television_program_path(television_program.id), id: 'preview-video-link' %> </td>
                     </tr>
                   <% end%>
@@ -359,10 +384,25 @@
 
         barChartOptions.datasetFill = false;
         barChart.Bar(barChartData, barChartOptions);
-
-        $("#css-video-modal").modal('show', function(){
-          console.log("asd");
-        });
     });
+
+    var adsPerfDataTable = $('#js-television-program-data-table').DataTable({
+      responsive: true,
+    });
+
+    $('input.js-table-checkbox').on( 'change', function (e) {
+      e.preventDefault();
+      var selectedColumn = adsPerfDataTable.columns( $(this).attr('data-column') );
+      if($('input.js-table-checkbox:checked').length == 0){
+        adsPerfDataTable.columns([0,1,2,3,4,5,6,7,8,9,10]).visible(true);
+      } else {
+        adsPerfDataTable.columns([0,1,2,3,4,5,6,7,8,9,10]).visible( false, false );
+        adsPerfDataTable.columns.adjust().draw( false );
+        $('input.js-table-checkbox:checked').each(function(){
+          adsPerfDataTable.columns( $(this).attr('data-column') ).visible(true);
+        });
+      }
+    });
+
   </script>
 <% end %>

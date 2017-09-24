@@ -1,5 +1,5 @@
-$('body').append('<%= escape_javascript(render("shared/show_video_modal_on_ads_performance")) %>');
-$('#css-video-modal').modal('show');
+$('#video-modal-wrapper').html('<%= escape_javascript(render("shared/show_video_modal_on_ads_performance")) %>');
+$('.css-video-modal').modal('show');
 
 var video = videojs('js-video-player', {
   controls: true,
@@ -7,10 +7,9 @@ var video = videojs('js-video-player', {
   preload: 'auto'
 });
 
-console.log("hai");
 video.currentTime(video.currentTime() + 5);
 video.on('timeupdate', function(e) {
-if (video.currentTime() >= 15) {
+if (video.currentTime() == 15) {
     video.pause();
   }
 });
