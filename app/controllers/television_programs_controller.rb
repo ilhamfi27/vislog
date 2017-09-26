@@ -63,7 +63,9 @@ class TelevisionProgramsController < ApplicationController
   end
 
   def download_video
-    
+    respond_to do |format|
+      format.js
+    end
   end
   
 

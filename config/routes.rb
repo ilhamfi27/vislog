@@ -96,6 +96,7 @@ Rails.application.routes.draw do
   resources :television_programs do
     collection do
       post :import
+      get :download_video
     end
   end
   resources :ads_performances, only: [:index] do
