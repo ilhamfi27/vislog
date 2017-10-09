@@ -1,0 +1,285 @@
+<% content_for :body_class, "hold-transition skin-blue sidebar-mini" %>
+
+<% content_for :admin_navbar do %>
+  <%= render 'shared/navbar_for_admin' %>
+<% end %>
+<% if @errors %>
+  <% @errors.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+<div class="content-wrapper">
+  <section class="content-header">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="wadah-1 box-shadow-1 padding-all-10">
+          <h2 class="color-green text-align-left">
+            Administrator
+            <span class="color-grey pull-right" 
+            style="font-size: 12pt;margin-top: 5px">
+              Commercial
+            </span>
+          </h2>
+          <div class="padding-all-10">
+            <div class="wadah-1">
+              <form method="post" action="" class="row">
+                <div class="form-group col-md-4">
+                  <input type="text" name="" class="form-control">
+                </div>
+                <div class="form-group col-md-8">
+                  <a href="" 
+                  class="btn btn-default f-bg-dark-blue color-white">
+                    Select File
+                  </a>
+                  <a href="" data-toggle="modal" data-target="#import"
+                  class="btn btn-default f-bg-green color-white">
+                    Import
+                  </a>
+                  <!-- MODAL -->
+                  <div class="modal fade" id="import" role="dialog">
+                    <div class="modal-dialog">
+                      <!-- MODAL CONTENT -->
+                      <div class="modal-content" style="width: 700px">
+                        <div class="modal-header">
+                          <button type="button" 
+                          class="close" 
+                          data-dismiss="modal">
+                            &times;
+                          </button>
+                          <a href="" 
+                          class="btn btn-default btn-dasar 
+                          f-bg-green color-white">
+                            Import
+                          </a>
+                        </div>
+                        <div class="modal-body">
+                          <div class="box-body">
+                                  <form method="post" action="" id="frm-example">
+                                  <table id="example" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                      <th>
+                                        <input name="select_all" value="1" id="example-select-all" 
+                                        type="checkbox">
+                                      </th>
+                                      <th>Name</th>
+                                      <th>Position</th>
+                                      <th>Office</th>
+                                      <th>Extn.</th>
+                                      <th>Start Date</th>
+                                      <th>Salary</th>
+                                    </tr>
+                                    </thead>
+                                  </table>
+                                  </form>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                              <button type="button" class="btn btn-default" 
+                              data-dismiss="modal">
+                                Close
+                              </button>
+                            </div>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="" data-toggle="modal" data-target="#import"
+                  class="btn btn-default f-bg-red color-white">
+                    Export
+                  </a>
+                  <!-- MODAL -->
+                  <div class="modal fade" id="export" role="dialog">
+                    <div class="modal-dialog">
+                      <!-- MODAL CONTENT -->
+                      <div class="modal-content" style="width: 700px">
+                        <div class="modal-header">
+                          <button type="button" 
+                          class="close" 
+                          data-dismiss="modal">
+                            &times;
+                          </button>
+                          <a href="" 
+                          class="btn btn-default btn-dasar 
+                          f-bg-red color-white">
+                            Import
+                          </a>
+                        </div>
+                        <div class="modal-body">
+                          <div class="box-body">
+                                  <form method="post" action="" id="frm-example">
+                                  <table id="example" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                      <th>
+                                        <input name="select_all" value="1" id="example-select-all" 
+                                        type="checkbox">
+                                      </th>
+                                      <th>Name</th>
+                                      <th>Position</th>
+                                      <th>Office</th>
+                                      <th>Extn.</th>
+                                      <th>Start Date</th>
+                                      <th>Salary</th>
+                                    </tr>
+                                    </thead>
+                                  </table>
+                                  </form>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                              <button type="button" class="btn btn-default" 
+                              data-dismiss="modal">
+                                Close
+                              </button>
+                            </div>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="" 
+                  class="btn btn-default f-bg-yellow pull-right color-white">
+                    Update History
+                  </a>
+                </div>
+              </form>
+              <div class="box" style="margin-top: 10px;">
+                      <div class="box-header">
+                        <h3 class="box-title">Data Table</h3>
+                      </div>
+                      <!-- /.box-header -->
+                      <div class="box-body">
+                        <form method="post" action="" id="frm-example">
+                        <table id="data" class="table table-bordered table-striped">
+                          <thead>
+                          <tr>
+                            <th>
+                              <input name="select_all" value="1" id="example-select-all" 
+                              type="checkbox">
+                            </th>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Extn.</th>
+                            <th>Start Date</th>
+                            <th>Salary</th>
+                          </tr>
+                          </thead>
+                        </table>
+                        </form>
+                      </div>
+                      <!-- /.box-body -->
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<footer class="main-footer">
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 1.0
+  </div>
+  <strong>
+    Copyright &copy; 2017
+    <a href="https://adminlte.io">Cipta Global Integral</a>.
+  </strong> All rights reserved.
+</footer>
+<div style="clear: both"></div>
+<%= content_for :javascript_in_file do %>
+  <script type="text/javascript">
+    $(document).ready(function (){   
+       var table = $('#example').DataTable({
+          'ajax': 'https://api.myjson.com/bins/1us28',  
+          'columnDefs': [{
+             'targets': 0,
+             'searchable':false,
+             'orderable':false,
+             'className': 'dt-body-center',
+             'render': function (data, type, full, meta){
+                 return '<input type="checkbox" name="id[]" value="' 
+                    + $('<div/>').text(data).html() + '">';
+             }
+          }],
+          'order': [1, 'asc'],
+          'paging'      : true,
+          'lengthChange': true,
+          'searching'   : true,
+          'ordering'    : true,
+          'info'        : true,
+          'autoWidth'   : false
+       });
+
+       var table = $('#data').DataTable({
+          'ajax': 'https://api.myjson.com/bins/1us28',  
+          'columnDefs': [{
+             'targets': 0,
+             'searchable':false,
+             'orderable':false,
+             'className': 'dt-body-center',
+             'render': function (data, type, full, meta){
+                 return '<input type="checkbox" name="id[]" value="' 
+                    + $('<div/>').text(data).html() + '">';
+             }
+          }],
+          'order': [1, 'asc'],
+          'paging'      : true,
+          'lengthChange': true,
+          'searching'   : true,
+          'ordering'    : true,
+          'info'        : true,
+          'autoWidth'   : false
+       });
+
+       // Handle click on "Select all" control
+       $('#example-select-all').on('click', function(){
+          // Check/uncheck all checkboxes in the table
+          var rows = table.rows({ 'search': 'applied' }).nodes();
+          $('input[type="checkbox"]', rows).prop('checked', this.checked);
+       });
+
+       // Handle click on checkbox to set state of "Select all" control
+       $('#example tbody').on('change', 'input[type="checkbox"]', function(){
+          // If checkbox is not checked
+          if(!this.checked){
+             var el = $('#example-select-all').get(0);
+             // If "Select all" control is checked and has 'indeterminate' property
+             if(el && el.checked && ('indeterminate' in el)){
+                // Set visual state of "Select all" control 
+                // as 'indeterminate'
+                el.indeterminate = true;
+             }
+          }
+       });
+        
+       $('#frm-example').on('submit', function(e){
+          var form = this;
+
+          // Iterate over all checkboxes in the table
+          table.$('input[type="checkbox"]').each(function(){
+             // If checkbox doesn't exist in DOM
+             if(!$.contains(document, this)){
+                // If checkbox is checked
+                if(this.checked){
+                   // Create a hidden element 
+                   $(form).append(
+                      $('<input>')
+                         .attr('type', 'hidden')
+                         .attr('name', this.name)
+                         .val(this.value)
+                   );
+                }
+             } 
+          });
+
+          // FOR TESTING ONLY
+          
+          // Output form data to a console
+          $('#example-console').text($(form).serialize()); 
+          console.log("Form submission", $(form).serialize()); 
+           
+          // Prevent actual form submission
+          e.preventDefault();
+       });
+    });
+  </script>
+<% end %>

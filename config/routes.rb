@@ -96,12 +96,15 @@ Rails.application.routes.draw do
   resources :television_programs do
     collection do
       post :import
+    end
+    member do
       get :download_video
     end
   end
   resources :ads_performances, only: [:index] do
     collection do
       get :export_data
+      get :download_cutted_videos
     end
   end
   resources :post_buys
