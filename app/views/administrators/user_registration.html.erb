@@ -33,17 +33,32 @@
                         </div>
                         <div class="modal-body">
                           <div class="box-body">
-                            <h2><%= t "devise.invitations.new.header" %></h2>
-
-                            <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
-                              <%= devise_error_messages! %>
-
-                            <% resource.class.invite_key_fields.each do |field| -%>
-                              <p><%= f.label field %><br />
-                              <%= f.text_field field %></p>
-                            <% end -%>
-
-                              <p><%= f.submit t("devise.invitations.new.submit_button") %></p>
+                            <%= form_tag add_user_on_administrators_path, :html => {:method => :post} do %>
+                              <div class="form-horizontal">
+                                <div class="form-group">
+                                  <%= label_tag :email, "email", class: "control-label col-md-3" %>
+                                  <div class="col-md-9">
+                                    <%= text_field_tag 'email', nil, placeholder: 'Email', class: "form-control" %>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <%= label_tag :username, "username", class: "control-label col-md-3" %>
+                                  <div class="col-md-9">
+                                    <%= text_field_tag 'username', nil, placeholder: 'Email', class: "form-control" %>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <%= label_tag :password, "password", class: "control-label col-md-3" %>
+                                  <div class="col-md-9">
+                                    <%= text_field_tag 'password', nil, placeholder: 'Email', class: "form-control" %>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <div class="col-sm-offset-3 col-sm-9">
+                                    <button type="submit" class="btn btn-default">Add</button>
+                                  </div>
+                                </div>
+                              </div>
                             <% end %> 
                           </div>
                         </div>
@@ -69,18 +84,24 @@
                   <table id="data" class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                      <th>
-                        <input name="select_all" value="1" id="example-select-all" 
-                        type="checkbox">
-                      </th>
                       <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Extn.</th>
-                      <th>Start Date</th>
-                      <th>Salary</th>
+                      <th>Username</th>
+                      <th>Email</th>
+                      <th>Level</th>
+                      <th>Added</th>
                     </tr>
                     </thead>
+                    <tbody>
+                      <% @users.each do |user| %>
+                        <tr>
+                          <td><%= user.name %></td>
+                          <td><%= user.username %></td>
+                          <td><%= user.email %></td>
+                          <td><%= user.admin? %></td>
+                          <td><%= user.created_at %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
                   </table>
                   </form>
                 </div>
@@ -107,27 +128,6 @@
   <script type="text/javascript">
     $(document).ready(function (){   
        var table = $('#example').DataTable({
-          'ajax': 'https://api.myjson.com/bins/1us28',  
-          'columnDefs': [{
-             'targets': 0,
-             'searchable':false,
-             'orderable':false,
-             'className': 'dt-body-center',
-             'render': function (data, type, full, meta){
-                 return '<input type="checkbox" name="id[]" value="' 
-                    + $('<div/>').text(data).html() + '">';
-             }
-          }],
-          'order': [1, 'asc'],
-          'paging'      : true,
-          'lengthChange': true,
-          'searching'   : true,
-          'ordering'    : true,
-          'info'        : true,
-          'autoWidth'   : false
-       });
-
-       var table = $('#data').DataTable({
           'ajax': 'https://api.myjson.com/bins/1us28',  
           'columnDefs': [{
              'targets': 0,

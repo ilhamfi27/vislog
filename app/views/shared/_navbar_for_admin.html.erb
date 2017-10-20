@@ -196,9 +196,9 @@
             <% end %>
           </li>
           <li>
-            <a href="upload-data-audience.html">
+            <%= link_to viewers_path do %>
               <i class="fa fa-circle-o"></i>Audience
-            </a>
+            <% end %>
           </li>
           <li>
             <%= link_to channels_path do %>
@@ -217,7 +217,7 @@
         </a>
         <ul class="treeview-menu">
           <li>
-            <%= link_to new_user_invitation_path do %>
+            <%= link_to user_registration_on_administrators_path do %>
               <i class="fa fa-circle-o"></i>Registration
             <% end %>
           </li>

@@ -19,6 +19,21 @@ class AdministratorsController < ApplicationController
     record_activity("Export table")    
   end
 
+  def user_registration
+    @users = User.all
+  end
+
+  def add_user
+    @user = User.new(add_user_params)
+    @user.password_confirmation = add_user_params[:password]
+    if @user.save
+      redirect_to user_registration_on_administrators_path, notice: 'User was successfully added.'
+    else
+      redirect_to user_registration_on_administrators_path, notice: 'User was failed to add.'
+    end
+
+  end
+
   private
     def show_all_television_program_data
       @television_programs = TelevisionProgram.includes(:channel)
@@ -26,5 +41,9 @@ class AdministratorsController < ApplicationController
 
     def show_all_channel_data
       @channels = Channel.all
+    end
+
+    def add_user_params
+      params.permit(:email, :username, :password)
     end
 end

@@ -126,7 +126,7 @@
                     <td class="td-cost-table data-table"> <%= television_program.cost %> </td>
                     <td class="td-st_video-table data-table"> <%= to_hours(television_program.st_video) %> </td>
                     <td class="td-et_video-table data-table"> <%= to_hours(television_program.et_video) %> </td>
-                    <td> <%= link_to 'Download', download_video_television_programs_path, remote: :true %> </td>
+                    <td> <%= link_to 'Download', download_video_television_program_path(television_program.id), remote: :true %> </td>
                   </tr>
                 <% end%>
               <% end %>

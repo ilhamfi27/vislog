@@ -31,6 +31,25 @@
 //= require video
 //= require videojs-flash
 //= require videojs-contrib-hls
+//= require jquery-ui
+
+function secondsToHms(d) {
+  d = Number(d);
+  var h = Math.round(d / 3600);
+  var m = Math.round(d % 3600 / 60);
+  var s = Math.round(d % 3600 % 60);
+
+  var label = [];
+
+  label.push(h > 0 ? h : null);
+  label.push(m > 0 ? (m < 10 ? '0' + m : m) : '00');
+  label.push(s > 0 ? (s < 10 ? '0' + s : s)  : '00');
+
+  label = _.filter(label, function(l) { return l != null });
+  label = label.join(':');
+
+  return label; 
+}
 
 $(document).on('ready', function(){
 
@@ -40,5 +59,4 @@ $(document).on('ready', function(){
   $(".alert").fadeTo(2000, 500).fadeOut(1000, function(){
     $(".alert").fadeOut(1000);
   });  
-
 });

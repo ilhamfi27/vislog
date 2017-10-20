@@ -24,6 +24,49 @@ class AdsPerformancesController < ApplicationController
     record_activity("Export table")
   end
 
+  def export_tables
+
+    @tables = [TelevisionProgram, PostBuy, Viewer].map do |model|
+      { 
+        table_name: model.table_name,
+        column_names: model.column_names,
+        data: model.all
+      }
+    end
+
+    respond_to do |format| 
+       format.xlsx {render xlsx: 'export_tables',filename: "tables.xlsx"}
+    end
+    record_activity("Export table")    
+  end
+
+  def download_cutted_videos
+    time_ranges = params[:time_ranges].values
+    television_program = TelevisionProgram.find(params[:television_program_id])
+    video_url = television_program.video.url(:mp4)
+    tmp_location = Rails.root.to_s + "/tmp/cutted_videos/#{session.id}/"
+    concat_list = time_ranges.map.with_index{|x, i| "#{i}.mp4"}.join('|')
+    video_url = Rails.root.to_s + '/app/public' + video_url
+
+    FileUtils::mkdir_p tmp_location
+
+    time_ranges.each.with_index do |time_range, index|
+      start_time = to_hours(time_range[0].to_i)
+      end_time = to_hours(time_range[1].to_i)
+      video = FFMPEG::Movie.new(video_url)
+      binding.pry
+      video.transcode("#{tmp_location}#{index}.mp4", seek_time: start_time, duration: end_time)
+    end
+
+    system "ffmpeg -i 'concat:" + concat_list + "' -codec copy #{tmp_location}/final.mp4"
+
+    send_file(
+      "#{tmp_location}final.mp4",
+      filename: "bla.mp4",
+      type: "video/mp4"
+    )    
+  end
+
   private
     def program_search_result
       @search = TelevisionProgram.dashboard_search(params[:keyword], params[:cols], params[:date])

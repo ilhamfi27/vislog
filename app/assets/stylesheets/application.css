@@ -15,6 +15,7 @@
  *= require bootstrap-select/bootstrap-select.min
  *= require dataTables.bootstrap.min
  *= require video-js
+ *= require jquery-ui
  */
 
 /* import font from url */

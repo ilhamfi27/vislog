@@ -1,6 +1,6 @@
 class TelevisionProgramsController < ApplicationController
   before_action :set_channel_collection, only: [:new, :edit]
-  before_action :set_television_program, only: [:show, :edit, :update, :destroy]
+  before_action :set_television_program, only: [:show, :edit, :update, :destroy, :download_video]
   before_action :show_all_television_program_data, only: [:index]
 
   def index
@@ -11,6 +11,7 @@ class TelevisionProgramsController < ApplicationController
     @television_program = TelevisionProgram.new
     post_buy = @television_program.build_post_buy
     post_buy.build_viewer
+    authorize @television_program
   end
 
   def create
@@ -20,6 +21,7 @@ class TelevisionProgramsController < ApplicationController
     @television_program.st_video =  to_seconds(television_program_params[:st_video])
     @television_program.et_video =  to_seconds(television_program_params[:et_video])
     @television_program.duration =  @television_program.et_video - @television_program.st_video
+    authorize @television_program
     if @television_program.save
       redirect_to new_television_program_path, notice: 'Program was successfully added.'
     else
@@ -29,10 +31,12 @@ class TelevisionProgramsController < ApplicationController
 
   def edit
     @television_program = TelevisionProgram.find(set_television_program)
+    authorize @television_program
   end
 
   def update
     if @television_program.update(television_program_params)
+    authorize @television_program
       redirect_to edit_television_program_path(set_television_program.id), notice: 'television_program was successfully updated.'
     else
       render :edit
@@ -41,6 +45,7 @@ class TelevisionProgramsController < ApplicationController
 
   def destroy
     @television_program.destroy
+    authorize @television_program
     redirect_to administrators_path, notice: 'television_program was successfully destroyed.'
   end
   
@@ -53,6 +58,7 @@ class TelevisionProgramsController < ApplicationController
 
   def import
     @importer = TelevisionProgramSpreadsheetImporter.new(params[:file]) 
+    authorize @television_program
     @importer.import!
 
     if @importer.is_valid

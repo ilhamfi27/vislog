@@ -1,19 +1,20 @@
 class Users::InvitationsController < Devise::InvitationsController
-  # def new
-  # 	super
-  # end
+  def new
+  	super
+  end
   
-  # def create
-		# super
-  # end
+  def create
+		super
+  end
   
-  # def edit
-		# super
-  # end
+  def edit
+		super
+  end
 
-  # def update
-  #   super
-  # end
+  def update
+    super
+  end
+  
   private
     # this is called when creating invitation
     # should return an instance of resource class

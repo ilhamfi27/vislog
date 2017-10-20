@@ -8,18 +8,18 @@ class TelevisionProgramPolicy < ApplicationPolicy
   end
 
   def update?
-    
+    user.admin?
   end
 
   def destroy?
-    
+    user.admin?
   end
 
   def import?
-    
+    user.admin?
   end
 
   def download_video?
-    
+    user.present?
   end
 end

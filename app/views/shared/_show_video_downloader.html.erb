@@ -1,4 +1,4 @@
-<div class="modal fade css-video-downloader" role="dialog">
+<div class="modal fade js-video-downloader" role="dialog">
   <div class="modal-dialog">
     <!-- MODAL CONTENT -->
     <div class="modal-content" style="width: 800px;">
@@ -9,7 +9,29 @@
       </div>
       <div class="modal-body">
         <div class="box-body">
-          hai
+          <video id="js-video-player" class="video-js" controls preload="auto" width="640" height="264" data-setup="{}">
+            <source src="<%= @television_program.video.url(:mp4) %>" type='video/mp4'>
+            <!-- <source src="<%#= @television_program.video.url(:webm) %>" type='video/webm'> -->
+            <p class="vjs-no-js">
+              To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+            </p>
+          </video>
+          <br>
+          <p>
+            <label for="amount">Price range:</label>
+            <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+          </p>
+           <div class="form-group">
+             <div id="video-length-slider-range"></div>
+             <button class="btn btn-default js-cut-video-button">Cut</button>
+           </div>
+           <p>Hasil Potong : </p>
+           <div class='js-cut-result'>
+           </div>
+           <div>
+             <button class="btn btn-default js-download-cutted-videos">Download</button>
+           </div>
+
         </div>
       </div>
       <div class="modal-footer">

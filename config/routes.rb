@@ -112,6 +112,8 @@ Rails.application.routes.draw do
   resources :administrators, only: [:index] do
     collection do
       get :export_tables
+      get :user_registration, as: :user_registration_on
+      post :add_user, as: :add_user_on
     end
   end
 end

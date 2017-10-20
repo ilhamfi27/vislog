@@ -34,6 +34,7 @@ class TelevisionProgram < ActiveRecord::Base
   validates :cost, :start_time, :end_time, :duration, :st_video, :et_video, numericality: { only_integer: true }
   mount_uploader :video, VideoUploader do
     def url(format = nil)
+      return nil if file.nil?
       uploaded_path = encode_path(file.path.sub(File.expand_path(root), ''))
       return uploaded_path if format.nil?
       files = Dir.entries(File.dirname(file.path))

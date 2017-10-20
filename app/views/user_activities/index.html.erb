@@ -7,68 +7,77 @@
 <div class="content-wrapper">
   <section class="content-header">
     <div class="row">
-      <div class="col-md-12 padding-all-10">
-        <div class="table-responsive">
-          <table id="js-television-program-data-table">
-            <thead>
-              <tr>
-                <th>
-                  username
-                </th>
-                <th>
-                  note
-                </th>
-                <th>
-                  user_ip
-                </th>
-                <th>
-                  browser
-                </th>
-                <th>
-                  controller
-                </th>
-                <th>
-                  action
-                </th>
-                <th>
-                  params
-                </th>
-                <th>
-                  created_at
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @activity_record.each do |record| %>
-                <tr>
-                  <td>
-                    <%= record.username %>
-                  </td>
-                  <td>
-                    <%= record.note %>
-                  </td>
-                  <td>
-                    <%= record.user_ip %>
-                  </td>
-                  <td>
-                    <%= record.browser %>
-                  </td>
-                  <td>
-                    <%= record.controller %>
-                  </td>
-                  <td>
-                    <%= record.action %>
-                  </td>
-                  <td>
-                    <%= record.params %>
-                  </td>
-                  <td>
-                    <%= record.created_at %>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
+      <div class="col-md-12">
+        <div class="wadah-1 box-shadow-1 padding-all-10">
+          <h2 class="color-green text-align-left">
+            User Activity Log
+          </h2>
+          <div class="padding-all-10">
+            <div class="wadah-1">
+              <div class="table-responsive">
+                <table id="data">
+                  <thead>
+                    <tr>
+                      <th>
+                        username
+                      </th>
+                      <th>
+                        note
+                      </th>
+                      <th>
+                        user_ip
+                      </th>
+                      <th>
+                        browser
+                      </th>
+                      <th>
+                        controller
+                      </th>
+                      <th>
+                        action
+                      </th>
+                      <th>
+                        params
+                      </th>
+                      <th>
+                        created_at
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @activity_record.each do |record| %>
+                      <tr>
+                        <td>
+                          <%= record.username %>
+                        </td>
+                        <td>
+                          <%= record.note %>
+                        </td>
+                        <td>
+                          <%= record.user_ip %>
+                        </td>
+                        <td>
+                          <%= record.browser %>
+                        </td>
+                        <td>
+                          <%= record.controller %>
+                        </td>
+                        <td>
+                          <%= record.action %>
+                        </td>
+                        <td>
+                          <%= record.params %>
+                        </td>
+                        <td>
+                          <%= record.created_at %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

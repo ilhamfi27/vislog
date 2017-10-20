@@ -1,5 +1,6 @@
 class ChannelsController < ApplicationController
   before_action :set_channel, only: [:show, :edit, :update, :destroy]
+  before_action :all_channels, only: [:index]
 
   def index
     new
@@ -38,6 +39,10 @@ class ChannelsController < ApplicationController
 
 
   private
+    def all_channels
+      @channels = Channel.all
+    end
+
     def set_channel
       @channel = Channel.find(params[:id])
     end
