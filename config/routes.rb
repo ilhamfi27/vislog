@@ -101,6 +101,7 @@ Rails.application.routes.draw do
       get :download_video
     end
   end
+  resources :television_commercials, only: [:index]
   resources :ads_performances, only: [:index] do
     collection do
       get :export_data

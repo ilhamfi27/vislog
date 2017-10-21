@@ -22,6 +22,7 @@ Rails.application.config.assets.precompile += %w( television_programs/show.css.s
 Rails.application.config.assets.precompile += %w( television_programs/new.css.scss )
 Rails.application.config.assets.precompile += %w( television_programs/edit.css.scss )
 Rails.application.config.assets.precompile += %w( television_programs/index.css.scss )
+Rails.application.config.assets.precompile += %w( television_commercials/index.css.scss )
 Rails.application.config.assets.precompile += %w( channels/show.css.scss )
 Rails.application.config.assets.precompile += %w( channels/new.css.scss )
 Rails.application.config.assets.precompile += %w( channels/edit.css.scss )
