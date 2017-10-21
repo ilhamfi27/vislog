@@ -53,7 +53,7 @@ function secondsToHms(d) {
 
 $(document).on('ready', function(){
 
-  $('#js-channel-data-table, #data').DataTable({
+  $('#js-channel-data-table, #data, #js-television-program-data-table').DataTable({
     responsive: true
   });
   $(".alert").fadeTo(2000, 500).fadeOut(1000, function(){
