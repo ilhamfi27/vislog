@@ -16,6 +16,7 @@
  *= require dataTables.bootstrap.min
  *= require video-js
  *= require jquery-ui
+ *= require bootstrap-notifications.min
  */
 
 /* import font from url */

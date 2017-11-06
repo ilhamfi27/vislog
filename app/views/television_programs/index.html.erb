@@ -23,125 +23,156 @@
           <div class="padding-all-10">
             <div class="wadah-1">
               <div class="row">
-              <div class="form-group col-md-4">
-                <form method="post" action="">
-                  <input type="text" name="" class="form-control">
-                </form>
-              </div>
-                <div class="form-group col-md-8">
-                  <%= form_tag import_television_programs_path, multipart: true do %>
+                <div class="col-md-6">
+                  <!-- <form method="post" action="">
+                    <input type="text" name="" class="form-control">
+                  </form> -->
+                  <%= form_tag import_television_programs_path class: 'form-inline' , multipart: true do %>
                     <span class="btn btn-default f-bg-dark-blue color-white">
                       <%= file_field_tag :file %>
                     </span>
                     <%= submit_tag "Import", class:"btn btn-default f-bg-green color-white" %>
                   <% end %>
-                  <a href="" data-toggle="modal" data-target="#import"
-                  class="btn btn-default f-bg-red color-white">
+                </div>
+                <div class="col-md-6">
+                  <div class="btn-group dropdown dropdown-notifications sw-open pull-right">
+                    <button class="btn btn-default dropdown-toggle 
+                    <%= "f-bg-red" if @count_has_not_read_notifications %>
+                    <%= "f-bg-dark-blue" unless @count_has_not_read_notifications %>
+                     color-white color-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Notifications
+                      <% if @count_has_not_read_notifications %>
+                        <%= "(#{@count_has_not_read_notifications})" %>
+                      <% end %>
+                    </button>
+                    <div class="dropdown-container dropdown-menu ">
+                      <div class="dropdown-toolbar">
+                        <h3 class="dropdown-toolbar-title"><%= "Recent Notifications  (#{@count_has_not_read_notifications})" %></h3>
+                      </div><!-- /dropdown-toolbar -->
+
+                      <ul class="dropdown-menu notifications">
+                        <% @has_not_read_notifications.each do |notification| %>
+                          <li class="notification">
+                            <div class="media">
+                              <div class="media-body">
+                                <strong class="notification-title"><%= notification.category %></strong>
+                                <p class="notification-desc"><%= notification.message %></p>
+
+                                <div class="notification-meta">
+                                  <small class="timestamp"><%= "#{time_ago_in_words(notification.created_at)} ago" %></small>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
+                  <a href="" data-toggle="modal" data-target="#import" class="btn btn-default f-bg-red color-white pull-right">
                     Export
                   </a>
-                  <a href="" 
-                  class="btn btn-default f-bg-yellow pull-right color-white">
+                  <a href="" class="btn btn-default f-bg-yellow pull-right color-white">
                     Update History
                   </a>
                 </div>
               </div>
               <div class="box" style="margin-top: 10px;">
-                      <div class="box-header">
-                        <h3 class="box-title">Data Table</h3>
-                      </div>
-                      <!-- /.box-header -->
-                      <div class="box-body">
-                        <div class="table-responsive">
-                          <table id="data" class="table table-bordered table-striped">
-                            <thead>
-                              <tr>
-                                <th>
-                                  program
-                                </th>
-                                <th>
-                                  channel
-                                </th>
-                                <th>
-                                  level 1
-                                </th>
-                                <th>
-                                  level 2
-                                </th>
-                                <th>
-                                  start time
-                                </th>
-                                <th>
-                                  end time
-                                </th>
-                                <th>
-                                  duration
-                                </th>
-                                <th>
-                                  cost
-                                </th>
-                                <th>
-                                  st video
-                                </th>
-                                <th>
-                                  et video
-                                </th>
-                                <th>
-                                  date
-                                </th>
-                                <th>
-                                  action
-                                </th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <% @television_programs.each do |television_program| %>
-                                <tr>
-                                  <td>
-                                    <%= television_program.program %>
-                                  </td>
-                                  <td>
-                                    <%= television_program.channel.name %>
-                                  </td>
-                                  <td>
-                                    <%= television_program.level_1 %>
-                                  </td>
-                                  <td>
-                                    <%= television_program.level_2 %>
-                                  </td>
-                                  <td>
-                                    <%= to_hours(television_program.start_time) %>
-                                  </td>
-                                  <td>
-                                    <%= to_hours(television_program.end_time) %>
-                                  </td>
-                                  <td>
-                                    <%= to_hours(television_program.duration) %>
-                                  </td>
-                                  <td>
-                                    <%= television_program.cost %>
-                                  </td>
-                                  <td>
-                                    <%= to_hours(television_program.st_video) %>
-                                  </td>
-                                  <td>
-                                    <%= to_hours(television_program.et_video) %>
-                                  </td>
-                                  <td>
-                                    <%= television_program.created_at %>
-                                  </td>
-                                  <td>
-                                    <%= link_to "show", television_program_path(television_program.id), id: 'preview-video-link', remote: :true %>
-                                    <%= link_to "update", edit_television_program_path(television_program.id) %>
-                                    <%= link_to "delete", television_program_path(television_program.id), method: :delete, data: {confirm: "Are you sure ?"} %>
-                                  </td>
-                                </tr>
-                              <% end %>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                      <!-- /.box-body -->
+                <div class="box-header">
+                  <h3 class="box-title">Data Table</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table id="data" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>
+                            program
+                          </th>
+                          <th>
+                            channel
+                          </th>
+                          <th>
+                            level 1
+                          </th>
+                          <th>
+                            level 2
+                          </th>
+                          <th>
+                            start time
+                          </th>
+                          <th>
+                            end time
+                          </th>
+                          <th>
+                            duration
+                          </th>
+                          <th>
+                            cost
+                          </th>
+                          <th>
+                            st video
+                          </th>
+                          <th>
+                            et video
+                          </th>
+                          <th>
+                            date
+                          </th>
+                          <th>
+                            action
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% @television_programs.each do |television_program| %>
+                          <tr>
+                            <td>
+                              <%= television_program.program %>
+                            </td>
+                            <td>
+                              <%= television_program.channel.name %>
+                            </td>
+                            <td>
+                              <%= television_program.level_1 %>
+                            </td>
+                            <td>
+                              <%= television_program.level_2 %>
+                            </td>
+                            <td>
+                              <%= to_hours(television_program.start_time) %>
+                            </td>
+                            <td>
+                              <%= to_hours(television_program.end_time) %>
+                            </td>
+                            <td>
+                              <%= to_hours(television_program.duration) %>
+                            </td>
+                            <td>
+                              <%= television_program.cost %>
+                            </td>
+                            <td>
+                              <%= to_hours(television_program.st_video) %>
+                            </td>
+                            <td>
+                              <%= to_hours(television_program.et_video) %>
+                            </td>
+                            <td>
+                              <%= television_program.created_at %>
+                            </td>
+                            <td>
+                              <%= link_to "show", television_program_path(television_program.id), id: 'preview-video-link', remote: :true %>
+                              <%= link_to "update", edit_television_program_path(television_program.id) %>
+                              <%= link_to "delete", television_program_path(television_program.id), method: :delete, data: {confirm: "Are you sure ?"} %>
+                            </td>
+                          </tr>
+                        <% end %>
+                      </tbody>
+                    </table>
                   </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
             </div>
           </div>
         </div>

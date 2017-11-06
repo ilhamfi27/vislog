@@ -2,10 +2,10 @@ class TelevisionProgramsController < ApplicationController
   before_action :set_channel_collection, only: [:new, :edit]
   before_action :set_television_program, only: [:show, :edit, :update, :destroy, :download_video]
   before_action :show_all_television_program_data, only: [:index]
+  before_action :count_has_not_read_notifications, only: [:index]
+  before_action :has_not_read_notifications, only: [:index]
 
-  def index
-    
-  end
+  def index; end
 
   def new
     @television_program = TelevisionProgram.new
@@ -58,13 +58,17 @@ class TelevisionProgramsController < ApplicationController
 
   def import
     @importer = TelevisionProgramSpreadsheetImporter.new(params[:file]) 
-    authorize @television_program
+    # authorize @television_program
     @importer.import!
 
-    if @importer.is_valid
-      render :import
-    else
-      render :import_error
+    # if @importer.is_valid
+    #   render :import
+    # else
+    #   render :import_error
+    # end
+    
+    if @importer
+      redirect_to television_programs_path
     end
   end
 
@@ -77,6 +81,14 @@ class TelevisionProgramsController < ApplicationController
 
 
   private
+    def count_has_not_read_notifications
+      @count_has_not_read_notifications = Notification.count_has_not_read_notifications
+    end
+
+    def has_not_read_notifications
+      @has_not_read_notifications = Notification.has_not_read_notifications
+    end
+
     def set_television_program
       @television_program = TelevisionProgram.find(params[:id])
     end

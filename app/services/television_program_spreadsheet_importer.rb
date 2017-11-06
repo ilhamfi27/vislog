@@ -14,14 +14,14 @@ class TelevisionProgramSpreadsheetImporter < SpreadsheetImporter
     # validate_header!(spreadsheet)
     map_television_programs!(spreadsheet)
 
-    if is_valid
-      TelevisionProgram.import @television_programs, validate: false
-    end
+    # if is_valid
+      TelevisionProgram.import @television_programs, validate: true
+    # end
   end
 
-  def is_valid
-    @errors.size == 0
-  end
+  # def is_valid
+  #   @errors.size == 0
+  # end
   private
 
   def map_television_programs!(spreadsheet)
@@ -47,6 +47,11 @@ class TelevisionProgramSpreadsheetImporter < SpreadsheetImporter
         @television_programs.push(television_program)
       else
         @errors << { row: index, errors: television_program.errors.full_messages }
+        television_program.errors.full_messages.each do |message|
+          error = "Error on row #{index}, the error is #{message}"
+          notification = Notification.new(message: error, category: 'Import Error')
+          notification.save
+        end
       end
     end
   end
