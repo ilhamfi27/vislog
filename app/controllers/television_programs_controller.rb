@@ -78,7 +78,10 @@ class TelevisionProgramsController < ApplicationController
     end
   end
   
-
+  def clear_all_notifications
+    Notification.first.destroy
+    redirect_to television_programs_path
+  end
 
   private
     def count_has_not_read_notifications

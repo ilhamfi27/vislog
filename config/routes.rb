@@ -96,6 +96,7 @@ Rails.application.routes.draw do
   resources :television_programs do
     collection do
       post :import
+      get :clear_all_notifications
     end
     member do
       get :download_video
